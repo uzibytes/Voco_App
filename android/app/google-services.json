@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "191467372865",
+    "project_id": "voco-a50d5",
+    "storage_bucket": "voco-a50d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191467372865:android:afc5d42ca118d259dfa1c0",
+        "android_client_info": {
+          "package_name": "com.snapsid.loginuicolors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191467372865-uo2r42s1gc3oq3qs141aeba5tic3nvgh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkX06omcOYnfbvmjbu0PEWaeM59Z_OzB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191467372865-uo2r42s1gc3oq3qs141aeba5tic3nvgh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
