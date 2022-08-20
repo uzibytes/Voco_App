@@ -41,6 +41,13 @@ class _Demo2WidgetState extends State<pronunciation2> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    player.stop();
+    flutterTts.stop();
+    super.dispose();
+  }
+
   Future<void> _startPlaying() async {
     await player.play(DeviceFileSource(widget.recordingPath));
     setState(() {
@@ -250,6 +257,9 @@ class _Demo2WidgetState extends State<pronunciation2> {
                                   child: ElevatedButton(
                                 onPressed: () async {
                                   // play the quote and show the play button
+                                  if (_isPlaying) {
+                                    await _stopPlaying();
+                                  }
                                   _isSpeaking
                                       ? await _stopSpeaking()
                                       : await _speakQuote();
@@ -289,6 +299,9 @@ class _Demo2WidgetState extends State<pronunciation2> {
                                   print('Button pressed ...');
                                   debugPrint(
                                       "Got file: ${widget.recordingPath}");
+                                  if (_isSpeaking) {
+                                    await _stopSpeaking();
+                                  }
                                   _isPlaying
                                       ? await _stopPlaying()
                                       : await _startPlaying();
