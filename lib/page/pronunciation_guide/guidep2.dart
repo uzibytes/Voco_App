@@ -1,13 +1,22 @@
 //page(4.(a)(i));
+import 'dart:async';
+import 'dart:io';
+import 'package:flutter/widgets.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loginuicolors/page/home.dart';
-import 'package:loginuicolors/page/pronunciation%20guide/guidep1.dart';
+import 'package:loginuicolors/page/pronunciation_guide/guidep1.dart';
 
 // ignore: must_be_immutable
 class pronunciation2 extends StatefulWidget {
-  pronunciation2({required this.quotesList, required this.pageNo});
+  pronunciation2(
+      {required this.quotesList,
+      required this.pageNo,
+      required this.recordingPath});
   final List<String> quotesList;
+  final String recordingPath;
 
   int pageNo;
 
@@ -17,6 +26,64 @@ class pronunciation2 extends StatefulWidget {
 
 class _Demo2WidgetState extends State<pronunciation2> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  bool _isPlaying = false;
+  bool _isSpeaking = false;
+
+  final player = AudioPlayer();
+
+  final FlutterTts flutterTts = FlutterTts();
+
+  @override
+  void initState() {
+    _isPlaying = false;
+    _isSpeaking = false;
+    super.initState();
+  }
+
+  Future<void> _startPlaying() async {
+    await player.play(DeviceFileSource(widget.recordingPath));
+    setState(() {
+      _isPlaying = true;
+    });
+    await player.onPlayerComplete.listen((event) => {
+          setState(() {
+            _isPlaying = false;
+          })
+        });
+  }
+
+  Future<void> _stopPlaying() async {
+    await player.stop();
+    setState(() {
+      _isPlaying = false;
+    });
+  }
+
+  Future<void> _speakQuote() async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.setPitch(1);
+    await flutterTts.setSpeechRate(0.5);
+    var result = await flutterTts.speak(widget.quotesList[widget.pageNo]);
+    if (result == 1) {
+      setState(() {
+        _isSpeaking = true;
+      });
+    }
+    flutterTts.setCompletionHandler(() {
+      setState(() {
+        _isSpeaking = false;
+      });
+    });
+  }
+
+  Future<void> _stopSpeaking() async {
+    await flutterTts.stop();
+    setState(() {
+      _isSpeaking = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -78,25 +145,38 @@ class _Demo2WidgetState extends State<pronunciation2> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           Container(
-                              width: mediaQuery.size.width * 0.48,
-                              height: mediaQuery.size.height * 0.39,
-                              child: SizedBox(
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        // Navigator.pushNamed(context, 'Vguide');
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary:
-                                            Color.fromARGB(248, 212, 255, 251),
+                            width: mediaQuery.size.width * 0.48,
+                            height: mediaQuery.size.height * 0.39,
+                            child: SizedBox(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromARGB(248, 212, 255, 251),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.arrow_circle_left_sharp,
+                                      color: Color.fromARGB(255, 150, 36, 36),
+                                      size: 80.0,
+                                    ), // icon
+                                    Text(
+                                      "Back",
+                                      style: GoogleFonts.lora(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 20.0,
                                       ),
-                                      child: Text(
-                                        "Button1 4(a)(i)",
-                                        style: GoogleFonts.lora(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.normal,
-                                        ),
-                                      )))),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                           Container(
                               width: mediaQuery.size.width * 0.48,
                               height: mediaQuery.size.height * 0.39,
@@ -168,18 +248,11 @@ class _Demo2WidgetState extends State<pronunciation2> {
                               height: mediaQuery.size.height * 0.39,
                               child: SizedBox(
                                   child: ElevatedButton(
-                                onPressed: () {
-                                  // play the sound file and show the play button
-                                  
-
-
-
-
-
-
-
-
-
+                                onPressed: () async {
+                                  // play the quote and show the play button
+                                  _isSpeaking
+                                      ? await _stopSpeaking()
+                                      : await _speakQuote();
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color.fromARGB(248, 212, 255, 251),
@@ -188,12 +261,15 @@ class _Demo2WidgetState extends State<pronunciation2> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Icon(
-                                      Icons.play_circle_fill_outlined,
+                                      // TextToSpeechIcon.text_speech,
+                                      _isSpeaking
+                                          ? Icons.pause_circle_filled
+                                          : Icons.play_circle_filled,
                                       color: Color.fromARGB(255, 150, 36, 36),
                                       size: 80.0,
                                     ), // icon
                                     Text(
-                                      "Listen to Your Voice",
+                                      "Listen to The Quote",
                                       style: GoogleFonts.lora(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
@@ -209,8 +285,13 @@ class _Demo2WidgetState extends State<pronunciation2> {
                               height: mediaQuery.size.height * 0.39,
                               child: SizedBox(
                                   child: ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   print('Button pressed ...');
+                                  debugPrint(
+                                      "Got file: ${widget.recordingPath}");
+                                  _isPlaying
+                                      ? await _stopPlaying()
+                                      : await _startPlaying();
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color.fromARGB(248, 212, 255, 251),
@@ -219,7 +300,9 @@ class _Demo2WidgetState extends State<pronunciation2> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Icon(
-                                      Icons.speaker_sharp,
+                                      _isPlaying
+                                          ? Icons.pause
+                                          : Icons.play_circle_outline,
                                       color: Color.fromARGB(255, 150, 36, 36),
                                       size: 80.0,
                                     ), // icon
@@ -241,4 +324,14 @@ class _Demo2WidgetState extends State<pronunciation2> {
               ]),
         )));
   }
+}
+
+class TextToSpeechIcon {
+  TextToSpeechIcon._();
+
+  static const _kFontFam = 'MyFlutterApp';
+  static const String? _kFontPkg = null;
+
+  static const IconData text_speech =
+      IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

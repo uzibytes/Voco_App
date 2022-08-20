@@ -26,7 +26,7 @@ class _StoryTelling extends State<StoryTelling> {
                 builder: (BuildContext context) {
                   return IconButton(
                     icon: const Icon(Icons.home),
-                   onPressed: () {
+                    onPressed: () {
                       //push and remove untill home page
                       Navigator.pushAndRemoveUntil(
                         context,

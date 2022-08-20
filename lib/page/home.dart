@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loginuicolors/page/TalkWithVoC/talkVoCop1.dart';
 import 'package:loginuicolors/page/game/game.dart';
-import 'package:loginuicolors/page/pronunciation%20guide/guidep1.dart';
+import 'package:loginuicolors/page/pronunciation_guide/guidep1.dart';
 import 'package:loginuicolors/page/story_telling/storytellling.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:alan_voice/alan_voice.dart';

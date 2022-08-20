@@ -1,10 +1,16 @@
 //page(4(a));
+import 'dart:async';
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sound_record/flutter_sound_record.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loginuicolors/page/home.dart';
-import 'package:loginuicolors/page/pronunciation%20guide/guidep2.dart';
+import 'package:loginuicolors/page/pronunciation_guide/guidep2.dart';
+import 'package:path_provider/path_provider.dart';
 
 // ignore: must_be_immutable
 class PronucitionGuide extends StatefulWidget {
@@ -18,6 +24,77 @@ class PronucitionGuide extends StatefulWidget {
 class _Demo2WidgetState extends State<PronucitionGuide> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final recorder = FlutterSoundRecorder();
+
+  bool _isRecording = false;
+  bool _isPaused = false;
+  int _recordDuration = 0;
+  Timer? _timer;
+  Timer? _ampTimer;
+  final FlutterSoundRecord _audioRecorder = FlutterSoundRecord();
+  Amplitude? _amplitude;
+
+  @override
+  void initState() {
+    _isRecording = false;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _ampTimer?.cancel();
+    _audioRecorder.dispose();
+    super.dispose();
+  }
+
+  Future<void> _startRecording() async {
+    final Directory appDocDirectory = await getApplicationDocumentsDirectory();
+    try {
+      if (await _audioRecorder.hasPermission()) {
+        await _audioRecorder.start(
+          path: '${appDocDirectory.path}/recording.mp3',
+          encoder: AudioEncoder.AAC,
+          bitRate: 128000,
+          samplingRate: 44100,
+        );
+
+        bool isRecording = await _audioRecorder.isRecording();
+        setState(() {
+          _isRecording = isRecording;
+          _recordDuration = 0;
+        });
+
+        _startTimer();
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
+  Future<String> _stopRecording() async {
+    _timer?.cancel();
+    _ampTimer?.cancel();
+    final String? path = await _audioRecorder.stop();
+    setState(() => _isRecording = false);
+    return path!;
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    _ampTimer?.cancel();
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      setState(() => _recordDuration++);
+    });
+
+    _ampTimer =
+        Timer.periodic(const Duration(milliseconds: 200), (Timer t) async {
+      _amplitude = await _audioRecorder.getAmplitude();
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -139,34 +216,33 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                               child: GestureDetector(
                             onLongPressDown: (details) async {
                               print('Recording started');
-                              //
                               // start recording the audio
+                              _startRecording();
+                              debugPrint("Recording Started");
                             },
                             onLongPressUp: () async {
                               print('Recording stopped');
+                              setState(() {
+                                _isRecording = false;
+                              });
                               // stop recording the audio
-
+                              String recordPath = await _stopRecording();
+                              debugPrint(
+                                  "Recording Stopped file saved at: ${recordPath}");
                               Navigator.push(
                                 context,
                                 new MaterialPageRoute(
                                   builder: (context) => new pronunciation2(
                                     pageNo: widget.pageNo,
                                     quotesList: widget.quotesList,
+                                    recordingPath: recordPath,
                                   ),
                                 ),
                               );
                             },
-                            // onLongPress: () {
-                            //   // start recording
-                            //   print('Recording started');
-                            // },
-                            // onLongPressCancel: () => {
-                            //   // stop recording
-                            //   print('Recording stopped')
-                            // },
                             child: Icon(
-                              Icons.mic,
-                              color: Colors.white,
+                              _isRecording ? Icons.stop : Icons.mic,
+                              color: _isRecording ? Colors.red : Colors.white,
                               size: 60.0,
                             ),
                           ))),

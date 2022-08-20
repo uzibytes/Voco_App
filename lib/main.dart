@@ -5,7 +5,7 @@ import 'package:loginuicolors/page/login/register.dart';
 import 'package:loginuicolors/page/home.dart';
 import 'package:loginuicolors/page/form/form.dart';
 import 'package:loginuicolors/page/login/LoginHome.dart';
-import 'package:loginuicolors/page/pronunciation%20guide/guidep2.dart';
+import 'package:loginuicolors/page/pronunciation_guide/guidep2.dart';
 import 'package:loginuicolors/page/story_telling/storytellling.dart';
 import 'package:loginuicolors/page/story_telling/storytelling2.dart';
 import 'package:loginuicolors/page/ui/comingsoon.dart';
@@ -14,7 +14,7 @@ import 'package:loginuicolors/page/ui/welcome.dart';
 import 'package:loginuicolors/page/TalkWithVoC/talkVoCop1.dart';
 import 'package:loginuicolors/page/TalkWithVoC/talkVoCop2.dart';
 import 'package:loginuicolors/page/TalkWithVoC/talkVoCop3.dart';
-import 'package:loginuicolors/page/pronunciation%20guide/guidep1.dart';
+import 'package:loginuicolors/page/pronunciation_guide/guidep1.dart';
 import 'package:flutter/services.dart';
 import 'package:alan_voice/alan_voice.dart';
 
@@ -37,8 +37,9 @@ void main() async {
             pageNo: 0,
           ),
       'Vguide2': (context) => pronunciation2(
-        quotesList: [],
+            quotesList: [],
             pageNo: 0,
+            recordingPath: "",
           ),
       'talkVoCo1': (context) => Talkwithvoco1(),
       'talkVoCo2': (context) => Talkwithvoco2(),
