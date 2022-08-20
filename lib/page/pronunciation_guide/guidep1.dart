@@ -214,10 +214,15 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                           height: mediaQuery.size.height * 0.39,
                           child: SizedBox(
                               child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _isRecording = false;
+                              });
+                            },
                             onLongPressDown: (details) async {
                               print('Recording started');
                               // start recording the audio
-                              _startRecording();
+                              await _startRecording();
                               debugPrint("Recording Started");
                             },
                             onLongPressUp: () async {
