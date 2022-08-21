@@ -1,4 +1,4 @@
-//page(4(a));
+//page(4(b));
 
 import 'package:flutter/material.dart';
 
@@ -89,18 +89,24 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco1> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Icon(
-                                    Icons.bolt,
-                                    color: Color.fromARGB(255, 150, 36, 36),
-                                    size: 80.0,
-                                  ), // icon
+                                    Container(
+                                    height: mediaQuery.size.height * 0.12,
+                                    width: mediaQuery.size.width * 0.6,
+                                    // color: Colors.black26,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/roboticsvoco.png'),
+                                      ),
+                                    ),
+                                  ),
                                   Text(
-                                    "Talk to VoCo Bot 4(b)",
+                                    "Talk to VoCo Bot ",
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.normal,
-                                      fontSize: 15.0,
+                                      fontSize: mediaQuery.size.height * 0.03,
                                     ),
                                   )
                                 ],
@@ -139,17 +145,17 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco1> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Icon(
-                                  Icons.bolt,
+                                  Icons.emoji_people_rounded ,
                                   color: Color.fromARGB(255, 150, 36, 36),
                                   size: 80.0,
                                 ), // icon
                                 Text(
-                                  "Talk to VoCo Bot",
+                                  "Talk to VoCo Mitra",
                                   style: GoogleFonts.lora(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.normal,
-                                    fontSize: 15.0,
+                                    fontSize: mediaQuery.size.height * 0.03,
                                   ),
                                 )
                               ],

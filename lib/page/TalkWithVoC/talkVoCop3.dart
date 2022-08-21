@@ -58,7 +58,7 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco3> {
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: <
               Widget>[
             Container(
-              color: Color.fromARGB(117, 240, 234, 234),
+              // color: Color.fromARGB(117, 77, 2, 2),
               width: mediaQuery.size.width * 1,
               height: mediaQuery.size.height * 0.04,
             ),
@@ -72,9 +72,12 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco3> {
                       Container(
                         width: mediaQuery.size.width * 0.9,
                         height: mediaQuery.size.height * 0.37,
+                        
                         child: Container(
+                          
                             width: mediaQuery.size.width * 0.48,
                             height: mediaQuery.size.height * 0.39,
+                            
                             child: SizedBox(
                                 child: ElevatedButton(
                               onPressed: () {},
@@ -82,17 +85,17 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco3> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Icon(
-                                    Icons.bolt,
-                                    color: Color.fromARGB(255, 150, 36, 36),
+                                    Icons.lock,
+                                    color: Color.fromARGB(255, 0, 4, 253),
                                     size: 80.0,
                                   ), // icon
                                   Text(
-                                    "Talk to VoCo Bot 4(b) ii",
+                                    "Talk to VoCo Professional",
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.normal,
-                                      fontSize: 15.0,
+                                      fontSize: mediaQuery.size.height * 0.03,
                                     ),
                                   )
                                 ],
@@ -125,17 +128,17 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco3> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Icon(
-                                  Icons.bolt,
+                                  Icons.lock,
                                   color: Color.fromARGB(255, 150, 36, 36),
                                   size: 80.0,
                                 ), // icon
                                 Text(
-                                  "Talk to VoCo Bot",
+                                  "Talk to VoCo Friend",
                                   style: GoogleFonts.lora(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.normal,
-                                    fontSize: 15.0,
+                                    fontSize: mediaQuery.size.height * 0.03,
                                   ),
                                 )
                               ],

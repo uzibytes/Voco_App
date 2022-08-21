@@ -118,13 +118,20 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
               },
             ),
             title: Text(
-              "   VoCo",
+              "   This screen is divided into two parts. Click on the top half to listen to Voco and click on the bottom half once to start recording, repeat voco and then click on the bottom half again to stop recording.",
+              // This screen is divided into two parts. Click on the top half to listen to Voco and click on the bottom half once to start recording, repeat voco and then click on the bottom half again to stop recording.
               style: GoogleFonts.lora(
-                  fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 1,
+                  color: Colors.blue),
             ),
             actions: <Widget>[
               IconButton(
-                  icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                  icon: Icon(Icons.arrow_circle_right), onPressed: () => {
+                       Navigator.of(context).pop(true),
+
+                  }),
             ],
           ),
         ),
@@ -140,36 +147,10 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                   width: mediaQuery.size.width * 1,
                   height: mediaQuery.size.height * 0.04,
                 ),
-                Container(
-                  width: mediaQuery.size.width * 1,
-                  height: mediaQuery.size.height * 0.04,
-                  color: Color.fromARGB(255, 249, 217, 217),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            width: mediaQuery.size.width * 0.8,
-                            height: mediaQuery.size.height * 0.03,
-                            child: Text(
-                              "  Pronunciation Guide",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.lora(
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.bold,
-                                fontSize: mediaQuery.size.height * 0.02,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: mediaQuery.size.height * 0.02,
-                ),
+
+                // SizedBox(
+                //   height: mediaQuery.size.height * 0.02,
+                // ),
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -183,19 +164,25 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            width: mediaQuery.size.width * 0.4,
-                            height: mediaQuery.size.height * 0.35,
-                          ),
+                            width: mediaQuery.size.width * 0.8,
+                            height: mediaQuery.size.height * 0.08,
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
                           Container(
-                            width: mediaQuery.size.width * 0.5,
-                            height: mediaQuery.size.height * 0.32,
-                            color: Color.fromARGB(255, 249, 217, 217),
+                            width: mediaQuery.size.width * 0.9,
+                            height: mediaQuery.size.height * 0.27,
+                            // color: Color.fromARGB(255, 137, 26, 26),
                             child: Text(
                               widget.quotesList[widget.pageNo],
                               style: GoogleFonts.lora(
                                 fontStyle: FontStyle.italic,
                                 fontWeight: FontWeight.bold,
-                                fontSize: mediaQuery.size.height * 0.02,
+                                fontSize: mediaQuery.size.height * 0.03,
+                                color: Color.fromARGB(255, 255, 255, 255),
                               ),
                             ),
                           ),
@@ -205,7 +192,7 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                   ),
                 ),
                 SizedBox(
-                  height: mediaQuery.size.height * 0.02,
+                  height: mediaQuery.size.height * 0.06,
                 ),
                 Container(
                     width: mediaQuery.size.width * 1,
@@ -237,7 +224,7 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                             child: Icon(
                               _isRecording ? Icons.stop : Icons.mic,
                               color: _isRecording ? Colors.red : Colors.white,
-                              size: 60.0,
+                              size: mediaQuery.size.height * 0.4,
                             ),
                           ))),
                     )),

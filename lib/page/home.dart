@@ -30,16 +30,33 @@ class _Demo2WidgetState extends State<HomePage> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60.0), // here the desired height
           child: AppBar(
+             
             toolbarHeight: 500,
+           
             title: Text(
-              "VoCo",
+              "VoCo Listen to the Guide carefully, the screen is divided into 4 quadrants. Click top left for Pronunciation Guide, Click top right for Talking with Voco, Click bottom left for Story Telling, Click bottom right for Games.",
+              // Listen to the Guide carefully, the screen is divided into 4 quadrants. Click top left for Pronunciation Guide, Click top right for Talking with Voco, Click bottom left for Story Telling, Click bottom right for Games.
               style: GoogleFonts.lora(
-                  fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
+                  fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, color: Colors.blue),
+                  
             ),
+            
             actions: <Widget>[
+              
               IconButton(
-                  icon: Icon(Icons.logout),
+               
+                 icon: 
+
+                 Text(
+              "Logout",
+              style: GoogleFonts.lora(
+                  fontStyle: FontStyle.italic, fontSize: 10, fontWeight: FontWeight.bold,),
+                
+                ),
+                  // icon: Icon(Icons.logout
+                  // ),
                   tooltip: "Logout",
+                  
                   onPressed: () async {
                     await FirebaseAuth.instance.signOut();
                     // go to login screen
@@ -116,7 +133,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.normal,
-                                    fontSize: 23,
+                                    fontSize: mediaQuery.size.width * 0.05,
                                   ),
                                 ),
                               ),
@@ -148,7 +165,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 23,
+                                 fontSize: mediaQuery.size.width * 0.05,
                                 ),
                               ),
                             ),
@@ -196,7 +213,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 23,
+                                 fontSize: mediaQuery.size.width * 0.05,
                                 ),
                               ),
                             ),
@@ -226,7 +243,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 23,
+                                 fontSize: mediaQuery.size.width * 0.05,
                                 ),
                               ),
                             ),

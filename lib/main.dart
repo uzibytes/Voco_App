@@ -51,7 +51,9 @@ void main() async {
       'ComingSoon': (context) => comingsoon(),
     },
   ));
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+
+  
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
 setupAlan(context) {

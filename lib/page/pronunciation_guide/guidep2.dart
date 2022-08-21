@@ -115,15 +115,19 @@ class _Demo2WidgetState extends State<pronunciation2> {
                 },
               ),
               title: Text(
-                "poronunciation guide",
+                "Pronunciation Guide This page is divided into 4 quadrants. Click on top left to go back, click on top right to go next, click bottom left to listen to Voco and click bottom right to listen to your audio.",
                 style: GoogleFonts.lora(
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black),
+                    fontSize: 1,
+                    color: Colors.blue),
               ),
               actions: <Widget>[
                 IconButton(
-                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {
+                    Navigator.of(context).pop(true),
+
+                    }),
               ],
             )),
         body: SafeArea(
@@ -279,7 +283,7 @@ class _Demo2WidgetState extends State<pronunciation2> {
                                       size: 80.0,
                                     ), // icon
                                     Text(
-                                      "Listen to The Quote",
+                                      "Listen to VoCo",
                                       style: GoogleFonts.lora(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
@@ -320,7 +324,7 @@ class _Demo2WidgetState extends State<pronunciation2> {
                                       size: 80.0,
                                     ), // icon
                                     Text(
-                                      "listen to your voice",
+                                      "listen to your own audio",
                                       style: GoogleFonts.lora(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
