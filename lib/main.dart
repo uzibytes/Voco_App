@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:loginuicolors/page/home_decide.dart';
 import 'package:loginuicolors/page/login/login.dart';
 import 'package:loginuicolors/page/login/register.dart';
 import 'package:loginuicolors/page/home.dart';
@@ -24,11 +25,12 @@ void main() async {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     // home: MyLogin(),
-    initialRoute: 'welcome',
+    initialRoute: 'homeDecide',
     routes: {
       'register': (context) => MyRegister(),
       'login': (context) => MyLogin(),
       'home': (context) => HomePage(),
+      'homeDecide': (context) => HomeDecide(),
       'form': (context) => form(),
       'welcome': (context) => welcome(),
       'start': (context) => LoginHome(),
@@ -52,15 +54,32 @@ void main() async {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
-setupAlan() {
+setupAlan(context) {
   /// Init Alan Button with project key from Alan Studio
   AlanVoice.addButton(
     "1339c43dc0367460eef225d7d1238ada2e956eca572e1d8b807a3e2338fdd0dc/stage",
     buttonAlign: AlanVoice.BUTTON_ALIGN_LEFT,
   );
 
-  /// Handle commands from Alan Studio
-  // AlanVoice.onCommand.add((command) {
-  //   debugPrint("got new command ${command.toString()}");
-  // });
+  AlanVoice.callbacks.add((command) => _handleCommand(command.data, context));
+}
+
+_handleCommand(Map<String, dynamic> command, BuildContext context) {
+  switch (command["command"]) {
+    case "guide":
+      Navigator.pushReplacementNamed(context, 'Vguide1');
+      break;
+
+    case "talkvoco":
+      Navigator.pushReplacementNamed(context, 'talkVoCo1');
+      break;
+    case "Story":
+      Navigator.pushReplacementNamed(context, 'StoryTelling');
+      break;
+    case "Games":
+      Navigator.pushReplacementNamed(context, 'Games');
+      break;
+    default:
+      debugPrint("unknown command, ${command["command"]}");
+  }
 }
