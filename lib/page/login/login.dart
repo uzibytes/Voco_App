@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loginuicolors/page/home_decide.dart';
+import 'package:loginuicolors/page/login/register.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -85,7 +87,43 @@ class _MyLoginState extends State<MyLogin> {
                                 child: IconButton(
                                   color: Colors.white,
                                   onPressed: () async {
-                                    await signIn();
+                                    if (_emailController.text.isEmpty ||
+                                        _passwordController.text.isEmpty) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              Text('Please fill all fields'),
+                                        ),
+                                      );
+                                    } else {
+                                      if (RegExp(
+                                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                          .hasMatch(_emailController.text)) {
+                                        try {
+                                          await signIn();
+                                          Navigator.of(context)
+                                              .pushAndRemoveUntil(
+                                                  MaterialPageRoute(
+                                                      builder:
+                                                          (context) =>
+                                                              HomeDecide()),
+                                                  (Route<dynamic> route) =>
+                                                      false);
+                                        } on FirebaseAuthException {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Text(
+                                                "Email or Password doesn't match"),
+                                          ));
+                                        } catch (e) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Text(e.toString()),
+                                          ));
+                                        }
+                                      }
+                                    }
                                   },
                                   icon: Icon(
                                     Icons.arrow_forward,
@@ -102,7 +140,10 @@ class _MyLoginState extends State<MyLogin> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, 'register');
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(
+                                          builder: (context) => MyRegister()),
+                                      (route) => false);
                                 },
                                 child: Text(
                                   'Sign Up',
@@ -115,7 +156,47 @@ class _MyLoginState extends State<MyLogin> {
                                 style: ButtonStyle(),
                               ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  if (_emailController.text.isEmpty) {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text('Please enter your email'),
+                                    ));
+                                  } else {
+                                    if (RegExp(
+                                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                        .hasMatch(_emailController.text)) {
+                                      try {
+                                        await FirebaseAuth.instance
+                                            .sendPasswordResetEmail(
+                                                email: _emailController.text);
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                              'Reset password link has been sent to your email'),
+                                        ));
+                                      } on FirebaseException {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                              'Email not found. Please register'),
+                                        ));
+                                      } catch (e) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content:
+                                              Text("Something went wrong: $e"),
+                                        ));
+                                      }
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              duration: Duration(seconds: 1),
+                                              content: Text(
+                                                  'Please enter a valid email')));
+                                    }
+                                  }
+                                },
                                 child: Text(
                                   'Forgot Password',
                                   style: TextStyle(

@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loginuicolors/page/home_decide.dart';
+import 'package:loginuicolors/page/login/login.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -111,7 +113,43 @@ class _MyRegisterState extends State<MyRegister> {
                                 child: IconButton(
                                   color: Colors.white,
                                   onPressed: () async {
-                                    await signUp();
+                                    if (_emailController.text.isEmpty ||
+                                        _passwordController.text.isEmpty) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              Text('Please fill all fields'),
+                                        ),
+                                      );
+                                    } else {
+                                      if (RegExp(
+                                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                          .hasMatch(_emailController.text)) {
+                                        try {
+                                          await signUp();
+                                          Navigator.of(context)
+                                              .pushAndRemoveUntil(
+                                                  MaterialPageRoute(
+                                                      builder:
+                                                          (context) =>
+                                                              HomeDecide()),
+                                                  (Route<dynamic> route) =>
+                                                      false);
+                                        } on FirebaseAuthException {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Text(
+                                                "Email or Password doesn't match"),
+                                          ));
+                                        } catch (e) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Text(e.toString()),
+                                          ));
+                                        }
+                                      }
+                                    }
                                   },
                                   icon: Icon(
                                     Icons.arrow_forward,
@@ -128,7 +166,11 @@ class _MyRegisterState extends State<MyRegister> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, 'login');
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (context) => MyLogin()),
+                                    (Route<dynamic> route) => false,
+                                  );
                                 },
                                 child: Text(
                                   'Sign In',

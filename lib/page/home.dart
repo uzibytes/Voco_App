@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loginuicolors/page/TalkWithVoC/talkVoCop1.dart';
 import 'package:loginuicolors/page/game/game.dart';
+import 'package:loginuicolors/page/login/login.dart';
 import 'package:loginuicolors/page/pronunciation_guide/guidep1.dart';
 import 'package:loginuicolors/page/story_telling/storytellling.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -29,22 +31,23 @@ class _Demo2WidgetState extends State<HomePage> {
           preferredSize: Size.fromHeight(60.0), // here the desired height
           child: AppBar(
             toolbarHeight: 500,
-            leading: Builder(
-              builder: (BuildContext context) {
-                return IconButton(
-                  icon: const Icon(Icons.home),
-                  onPressed: () {},
-                );
-              },
-            ),
             title: Text(
-              "   VoCo",
+              "VoCo",
               style: GoogleFonts.lora(
                   fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
             ),
             actions: <Widget>[
               IconButton(
-                  icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                  icon: Icon(Icons.logout),
+                  tooltip: "Logout",
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signOut();
+                    // go to login screen
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => MyLogin()),
+                      (Route<dynamic> route) => false,
+                    );
+                  }),
             ],
           )),
       body: SafeArea(

@@ -26,12 +26,10 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
   final recorder = FlutterSoundRecorder();
 
   bool _isRecording = false;
-  bool _isPaused = false;
   int _recordDuration = 0;
   Timer? _timer;
   Timer? _ampTimer;
   final FlutterSoundRecord _audioRecorder = FlutterSoundRecord();
-  Amplitude? _amplitude;
 
   @override
   void initState() {
@@ -91,7 +89,6 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
 
     _ampTimer =
         Timer.periodic(const Duration(milliseconds: 200), (Timer t) async {
-      _amplitude = await _audioRecorder.getAmplitude();
       setState(() {});
     });
   }
@@ -103,33 +100,34 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
         key: scaffoldKey,
         // backgroundColor: Color(0xFFF1F8F4),
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(60.0), // here the desired height
-            child: AppBar(
-              leading: Builder(
-                builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {
-                      //push and remove untill home page
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                  );
-                },
-              ),
-              title: Text(
-                "   VoCo",
-                style: GoogleFonts.lora(
-                    fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
-              ),
-              actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
-              ],
-            )),
+          preferredSize: Size.fromHeight(60.0), // here the desired height
+          child: AppBar(
+            leading: Builder(
+              builder: (BuildContext context) {
+                return IconButton(
+                  icon: const Icon(Icons.home),
+                  onPressed: () {
+                    //push and remove untill home page
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  },
+                );
+              },
+            ),
+            title: Text(
+              "   VoCo",
+              style: GoogleFonts.lora(
+                  fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
+            ),
+            actions: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+            ],
+          ),
+        ),
         body: SafeArea(
             child: Container(
           decoration: BoxDecoration(
@@ -146,11 +144,12 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                   width: mediaQuery.size.width * 1,
                   height: mediaQuery.size.height * 0.04,
                   color: Color.fromARGB(255, 249, 217, 217),
-                  child: Column(children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
                             width: mediaQuery.size.width * 0.8,
                             height: mediaQuery.size.height * 0.03,
                             child: Text(
@@ -161,10 +160,12 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: mediaQuery.size.height * 0.02,
                               ),
-                            )),
-                      ],
-                    ),
-                  ]),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: mediaQuery.size.height * 0.02,
@@ -176,30 +177,32 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                         fit: BoxFit.cover),
                   ),
                   height: mediaQuery.size.height * 0.39,
-                  child: Column(children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          width: mediaQuery.size.width * 0.4,
-                          height: mediaQuery.size.height * 0.35,
-                        ),
-                        Container(
-                          width: mediaQuery.size.width * 0.5,
-                          height: mediaQuery.size.height * 0.32,
-                          color: Color.fromARGB(255, 249, 217, 217),
-                          child: Text(
-                            widget.quotesList[widget.pageNo],
-                            style: GoogleFonts.lora(
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.bold,
-                              fontSize: mediaQuery.size.height * 0.02,
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: mediaQuery.size.width * 0.4,
+                            height: mediaQuery.size.height * 0.35,
+                          ),
+                          Container(
+                            width: mediaQuery.size.width * 0.5,
+                            height: mediaQuery.size.height * 0.32,
+                            color: Color.fromARGB(255, 249, 217, 217),
+                            child: Text(
+                              widget.quotesList[widget.pageNo],
+                              style: GoogleFonts.lora(
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.bold,
+                                fontSize: mediaQuery.size.height * 0.02,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ]),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: mediaQuery.size.height * 0.02,
@@ -214,36 +217,22 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                           height: mediaQuery.size.height * 0.39,
                           child: SizedBox(
                               child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _isRecording = false;
-                              });
-                            },
-                            onLongPressDown: (details) async {
-                              print('Recording started');
-                              // start recording the audio
-                              await _startRecording();
-                              debugPrint("Recording Started");
-                            },
-                            onLongPressUp: () async {
-                              print('Recording stopped');
-                              setState(() {
-                                _isRecording = false;
-                              });
-                              // stop recording the audio
-                              String recordPath = await _stopRecording();
-                              debugPrint(
-                                  "Recording Stopped file saved at: ${recordPath}");
-                              Navigator.push(
-                                context,
-                                new MaterialPageRoute(
-                                  builder: (context) => new pronunciation2(
-                                    pageNo: widget.pageNo,
-                                    quotesList: widget.quotesList,
-                                    recordingPath: recordPath,
+                            onTap: () async {
+                              if (!_isRecording) {
+                                _startRecording();
+                              } else {
+                                String recordPath = await _stopRecording();
+                                Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                    builder: (context) => new pronunciation2(
+                                      pageNo: widget.pageNo,
+                                      quotesList: widget.quotesList,
+                                      recordingPath: recordPath,
+                                    ),
                                   ),
-                                ),
-                              );
+                                );
+                              }
                             },
                             child: Icon(
                               _isRecording ? Icons.stop : Icons.mic,
