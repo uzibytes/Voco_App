@@ -128,10 +128,10 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
             ),
             actions: <Widget>[
               IconButton(
-                  icon: Icon(Icons.arrow_circle_right), onPressed: () => {
-                       Navigator.of(context).pop(true),
-
-                  }),
+                  icon: Icon(Icons.arrow_circle_right),
+                  onPressed: () => {
+                        Navigator.of(context).pop(true),
+                      }),
             ],
           ),
         ),
@@ -191,42 +191,34 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                     ],
                   ),
                 ),
+                // SizedBox(
+                //   height: mediaQuery.size.height * 0.06,
+                // ),
                 SizedBox(
-                  height: mediaQuery.size.height * 0.06,
-                ),
-                Container(
-                    width: mediaQuery.size.width * 1,
-                    height: mediaQuery.size.height * 0.3,
-                    color: Color.fromARGB(255, 249, 217, 217),
-                    child: SizedBox(
-                      child: Container(
-                          width: mediaQuery.size.width * 0.48,
-                          height: mediaQuery.size.height * 0.39,
-                          child: SizedBox(
-                              child: GestureDetector(
-                            onTap: () async {
-                              if (!_isRecording) {
-                                _startRecording();
-                              } else {
-                                String recordPath = await _stopRecording();
-                                Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                    builder: (context) => new pronunciation2(
-                                      pageNo: widget.pageNo,
-                                      quotesList: widget.quotesList,
-                                      recordingPath: recordPath,
-                                    ),
-                                  ),
-                                );
-                              }
-                            },
-                            child: Icon(
-                              _isRecording ? Icons.stop : Icons.mic,
-                              color: _isRecording ? Colors.red : Colors.white,
-                              size: mediaQuery.size.height * 0.4,
+                    height: mediaQuery.size.height * 0.4,
+                    child: GestureDetector(
+                      onTap: () async {
+                        if (!_isRecording) {
+                          _startRecording();
+                        } else {
+                          String recordPath = await _stopRecording();
+                          Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                              builder: (context) => new pronunciation2(
+                                pageNo: widget.pageNo,
+                                quotesList: widget.quotesList,
+                                recordingPath: recordPath,
+                              ),
                             ),
-                          ))),
+                          );
+                        }
+                      },
+                      child: Icon(
+                        _isRecording ? Icons.stop : Icons.mic,
+                        color: _isRecording ? Colors.red : Colors.green,
+                        size: mediaQuery.size.height * 0.2,
+                      ),
                     )),
               ]),
         )));
