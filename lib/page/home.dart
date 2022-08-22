@@ -1,3 +1,4 @@
+import 'package:alan_voice/alan_voice.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,6 +22,11 @@ class _Demo2WidgetState extends State<HomePage> {
   // get firebase instance
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   List<String> quotes = [];
+  @override
+  void initState() {
+    setupAlan(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,33 +36,18 @@ class _Demo2WidgetState extends State<HomePage> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60.0), // here the desired height
           child: AppBar(
-             
+            leading: Icon(Icons.home),
             toolbarHeight: 500,
-           
             title: Text(
-              "VoCo Listen to the Guide carefully, the screen is divided into 4 quadrants. Click top left for Pronunciation Guide, Click top right for Talking with Voco, Click bottom left for Story Telling, Click bottom right for Games.",
+              "Listen to the Guide carefully, the screen is divided into 4 quadrants. Click top left for Pronunciation Guide, Click top right for Talking with Voco, Click bottom left for Story Telling, Click bottom right for Games.",
               // Listen to the Guide carefully, the screen is divided into 4 quadrants. Click top left for Pronunciation Guide, Click top right for Talking with Voco, Click bottom left for Story Telling, Click bottom right for Games.
               style: GoogleFonts.lora(
-                  fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, color: Colors.blue),
-                  
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue),
             ),
-            
             actions: <Widget>[
-              
-              IconButton(
-               
-                 icon: 
-
-                 Text(
-              "Logout",
-              style: GoogleFonts.lora(
-                  fontStyle: FontStyle.italic, fontSize: 10, fontWeight: FontWeight.bold,),
-                
-                ),
-                  // icon: Icon(Icons.logout
-                  // ),
-                  tooltip: "Logout",
-                  
+              TextButton(
                   onPressed: () async {
                     await FirebaseAuth.instance.signOut();
                     // go to login screen
@@ -64,17 +55,18 @@ class _Demo2WidgetState extends State<HomePage> {
                       MaterialPageRoute(builder: (context) => MyLogin()),
                       (Route<dynamic> route) => false,
                     );
-                  }),
+                  },
+                  child: Text(
+                    'Logout',
+                    style: TextStyle(color: Colors.white),
+                  ))
             ],
           )),
       body: SafeArea(
         child: Container(
           width: mediaQuery.size.width * 1,
           height: mediaQuery.size.height * 1,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/register.png'), fit: BoxFit.cover),
-          ),
+          decoration: BoxDecoration(color: Colors.blue),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -99,26 +91,31 @@ class _Demo2WidgetState extends State<HomePage> {
                               onPressed: () async {
                                 final collections =
                                     _firestore.collection('sentences');
-                                await collections.get().then((value) {
-                                  value.docs.forEach((element) {
-                                    print(element.data().length);
-                                    final docs = element.data();
-                                    docs.forEach((key, value) {
-                                      print(key);
-                                      print(value);
-                                      quotes.add(value);
-                                    });
-                                  });
-                                });
+                                await collections.get().then(
+                                  (value) {
+                                    value.docs.forEach(
+                                      (element) {
+                                        print(element.data().length);
+                                        final docs = element.data();
+                                        docs.forEach((key, value) {
+                                          print(key);
+                                          print(value);
+                                          quotes.add(value);
+                                        });
+                                      },
+                                    );
+                                  },
+                                );
 
                                 Navigator.push(
-                                    context,
-                                    new MaterialPageRoute(
-                                        builder: (context) =>
-                                            new PronucitionGuide(
-                                              quotesList: quotes,
-                                              pageNo: 0,
-                                            )));
+                                  context,
+                                  new MaterialPageRoute(
+                                    builder: (context) => new PronucitionGuide(
+                                      quotesList: quotes,
+                                      pageNo: 0,
+                                    ),
+                                  ),
+                                );
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color.fromARGB(248, 212, 255, 251),
@@ -165,7 +162,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.normal,
-                                 fontSize: mediaQuery.size.width * 0.05,
+                                  fontSize: mediaQuery.size.width * 0.05,
                                 ),
                               ),
                             ),
@@ -178,7 +175,7 @@ class _Demo2WidgetState extends State<HomePage> {
               ),
               SizedBox(
                 width: mediaQuery.size.width * 1,
-                height: mediaQuery.size.height * 0.03,
+                height: mediaQuery.size.height * 0.01,
               ),
               Container(
                 width: mediaQuery.size.width * 1,
@@ -213,7 +210,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.normal,
-                                 fontSize: mediaQuery.size.width * 0.05,
+                                  fontSize: mediaQuery.size.width * 0.05,
                                 ),
                               ),
                             ),
@@ -243,7 +240,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.normal,
-                                 fontSize: mediaQuery.size.width * 0.05,
+                                  fontSize: mediaQuery.size.width * 0.05,
                                 ),
                               ),
                             ),
@@ -260,5 +257,63 @@ class _Demo2WidgetState extends State<HomePage> {
         ),
       ),
     );
+  }
+}
+
+setupAlan(BuildContext context) {
+  /// Init Alan Button with project key from Alan Studio
+  AlanVoice.addButton(
+    "1339c43dc0367460eef225d7d1238ada2e956eca572e1d8b807a3e2338fdd0dc/stage",
+    buttonAlign: AlanVoice.BUTTON_ALIGN_LEFT,
+  );
+
+  AlanVoice.callbacks.add((command) => _handleCommand(command.data, context));
+}
+
+_handleCommand(Map<String, dynamic> command, BuildContext context) async {
+  switch (command["commands"]) {
+    case "guide":
+      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+      List<String> quotes = [];
+      final collections = await _firestore.collection('sentences');
+      await collections.get().then(
+        (value) {
+          value.docs.forEach(
+            (element) {
+              print(element.data().length);
+              final docs = element.data();
+              docs.forEach((key, value) {
+                print(key);
+                print(value);
+                quotes.add(value);
+              });
+            },
+          );
+        },
+      );
+
+      Navigator.push(
+        context,
+        new MaterialPageRoute(
+          builder: (context) => new PronucitionGuide(
+            quotesList: quotes,
+            pageNo: 0,
+          ),
+        ),
+      );
+      break;
+
+    case "talkvoco":
+      Navigator.pushReplacementNamed(context, 'talkVoCo1');
+      break;
+    case "Story":
+      Navigator.pushReplacementNamed(context, 'StoryTelling');
+      break;
+    case "Games":
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Games()));
+      break;
+    default:
+      debugPrint("unknown command, ${command["command"]}");
   }
 }
