@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:loginuicolors/page/home.dart';
 import 'package:alan_voice/alan_voice.dart';
+import 'package:loginuicolors/page/home_decide.dart';
 
 void main() {
   runApp(welcome());
@@ -34,7 +35,7 @@ class SplashScreenState extends State<MyHomePage> {
   appwelcom() {
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => HomeDecide()));
     });
   }
 

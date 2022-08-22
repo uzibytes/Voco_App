@@ -24,7 +24,7 @@ void main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: MyLogin(),
-      initialRoute: 'homeDecide',
+      initialRoute: 'welcome',
       routes: {
         'register': (context) => MyRegister(),
         'login': (context) => MyLogin(),
