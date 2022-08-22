@@ -16,7 +16,6 @@ import 'package:loginuicolors/page/TalkWithVoC/talkVoCop1.dart';
 import 'package:loginuicolors/page/TalkWithVoC/talkVoCop2.dart';
 import 'package:loginuicolors/page/TalkWithVoC/talkVoCop3.dart';
 import 'package:loginuicolors/page/pronunciation_guide/guidep1.dart';
-import 'package:flutter/services.dart';
 import 'package:alan_voice/alan_voice.dart';
 
 void main() async {
