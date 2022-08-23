@@ -36,7 +36,22 @@ class _Demo2WidgetState extends State<HomePage> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(60.0), // here the desired height
           child: AppBar(
-            leading: Icon(Icons.home),
+            //add home button with text
+            leading: Builder(
+              builder: (BuildContext context) {
+                return TextButton(
+                    onPressed: () async {},
+                    child: Text(
+                      'Home',
+                      style: TextStyle(color: Colors.white),
+                    ));
+                    
+              },
+            ),
+
+            // leading: Icon(Icons.home),
+            //add text to appbar
+
             toolbarHeight: 500,
             title: Text(
               "Listen to the Guide carefully, the screen is divided into 4 quadrants. Click top left for Pronunciation Guide, Click top right for Talking with Voco, Click bottom left for Story Telling, Click bottom right for Games.",
@@ -148,7 +163,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                     new MaterialPageRoute(
                                         builder: (context) =>
                                             new Talkwithvoco1()));
-                                print('Button pressed ...');
+                                // print('Button pressed ...');
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color.fromARGB(248, 212, 255, 251),
@@ -304,16 +319,73 @@ _handleCommand(Map<String, dynamic> command, BuildContext context) async {
       break;
 
     case "talkvoco":
-      Navigator.pushReplacementNamed(context, 'talkVoCo1');
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Talkwithvoco1()));
       break;
+
+    // case "exit":
+    //   Navigator.pushAndRemoveUntil(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => HomePage()),
+    //     (Route<dynamic> route) => false,
+    //   );
+    //   break;
     case "Story":
-      Navigator.pushReplacementNamed(context, 'StoryTelling');
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => StoryTelling()));
       break;
+    // case "home":
+    //   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    //   List<String> quotes = [];
+    //   final collections = await _firestore.collection('sentences');
+    //   await collections.get().then(
+    //     (value) {
+    //       value.docs.forEach(
+    //         (element) {
+    //           print(element.data().length);
+    //           final docs = element.data();
+    //           docs.forEach((key, value) {
+    //             print(key);
+    //             print(value);
+    //             quotes.add(value);
+    //           });
+    //         },
+    //       );
+    //     },
+    //   );
+    //   Navigator.of(context)
+    //       .push(MaterialPageRoute(builder: (context) => HomePage()));
+    //   break;
     case "Games":
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => Games()));
       break;
+    case "back":
+      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+      List<String> quotes = [];
+      final collections = await _firestore.collection('sentences');
+      await collections.get().then(
+        (value) {
+          value.docs.forEach(
+            (element) {
+              print(element.data().length);
+              final docs = element.data();
+              docs.forEach((key, value) {
+                print(key);
+                print(value);
+                quotes.add(value);
+              });
+            },
+          );
+        },
+      );
+
+      Navigator.of(context).pop(true);
+
+      break;
+
     default:
       debugPrint("unknown command, ${command["command"]}");
+      break;
   }
 }

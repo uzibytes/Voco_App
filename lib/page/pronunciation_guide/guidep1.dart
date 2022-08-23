@@ -104,17 +104,18 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
           child: AppBar(
             leading: Builder(
               builder: (BuildContext context) {
-                return IconButton(
-                  icon: const Icon(Icons.home),
-                  onPressed: () {
-                    //push and remove untill home page
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                      (Route<dynamic> route) => false,
-                    );
-                  },
-                );
+                return TextButton(
+                    onPressed: () async {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                        (Route<dynamic> route) => false,
+                      );
+                    },
+                    child: Text(
+                      'Home',
+                      style: TextStyle(color: Colors.white),
+                    ));
               },
             ),
             title: Text(
@@ -127,11 +128,14 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                   color: Colors.blue),
             ),
             actions: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.arrow_circle_right),
-                  onPressed: () => {
-                        Navigator.of(context).pop(true),
-                      }),
+              TextButton(
+                  onPressed: () async {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: Text(
+                    'Back',
+                    style: TextStyle(color: Colors.white),
+                  ))
             ],
           ),
         ),

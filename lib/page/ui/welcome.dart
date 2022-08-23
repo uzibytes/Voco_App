@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:loginuicolors/page/home.dart';
+import 'package:google_fonts/google_fonts.dart';
+// import 'package:loginuicolors/page/home.dart';
 import 'package:alan_voice/alan_voice.dart';
 import 'package:loginuicolors/page/home_decide.dart';
 
@@ -43,6 +44,22 @@ class SplashScreenState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
+        // Add text
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "welcome to VoCo",
+              // Listen to the Guide carefully, the screen is divided into 4 quadrants. Click top left for Pronunciation Guide, Click top right for Talking with Voco, Click bottom left for Story Telling, Click bottom right for Games.
+              style: GoogleFonts.lora(
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+                color: Colors.yellow,
+                fontSize: 1,
+              ),
+            ),
+          ],
+        ),
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/welcome_voco.png'), fit: BoxFit.cover),

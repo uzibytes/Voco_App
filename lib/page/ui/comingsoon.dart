@@ -47,10 +47,12 @@ class _comingsoon extends State<comingsoon> {
                         child: ElevatedButton(
                             onPressed: () {
                               //   Navigator.pushNamed(context, 'Vguide');
-                              Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                      builder: (context) => new HomePage()));
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                                (Route<dynamic> route) => false,
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               // primary: Color.fromARGB(248, 212, 255, 251),

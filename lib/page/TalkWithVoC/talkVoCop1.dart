@@ -29,17 +29,18 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco1> {
             child: AppBar(
               leading: Builder(
                 builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {
-                      //push and remove untill home page
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                  );
+                  return TextButton(
+                      onPressed: () async {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (Route<dynamic> route) => false,
+                        );
+                      },
+                      child: Text(
+                        'Home',
+                        style: TextStyle(color: Colors.white),
+                      ));
                 },
               ),
               title: Text(
@@ -48,8 +49,14 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco1> {
                     fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),
               ),
               actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                TextButton(
+                    onPressed: () async {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text(
+                      'Back',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             )),
         body: SafeArea(
@@ -68,55 +75,53 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco1> {
               height: mediaQuery.size.height * 0.39,
               // color: Colors.black,
               child: Column(children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        width: mediaQuery.size.width * 0.9,
-                        height: mediaQuery.size.height * 0.37,
-                        child: Container(
-                            width: mediaQuery.size.width * 0.48,
-                            height: mediaQuery.size.height * 0.39,
-                            child: SizedBox(
-                                child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    new MaterialPageRoute(
-                                        builder: (context) =>
-                                            new Talkwithvoco2()));
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                    Container(
-                                    height: mediaQuery.size.height * 0.12,
-                                    width: mediaQuery.size.width * 0.6,
-                                    // color: Colors.black26,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/roboticsvoco.png'),
-                                      ),
-                                    ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: <
+                    Widget>[
+                  Container(
+                    width: mediaQuery.size.width * 0.9,
+                    height: mediaQuery.size.height * 0.37,
+                    child: Container(
+                        width: mediaQuery.size.width * 0.48,
+                        height: mediaQuery.size.height * 0.39,
+                        child: SizedBox(
+                            child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) => new Talkwithvoco2()));
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                height: mediaQuery.size.height * 0.12,
+                                width: mediaQuery.size.width * 0.6,
+                                // color: Colors.black26,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage('assets/roboticsvoco.png'),
                                   ),
-                                  Text(
-                                    "Talk to VoCo Bot ",
-                                    style: GoogleFonts.lora(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: mediaQuery.size.height * 0.03,
-                                    ),
-                                  )
-                                ],
+                                ),
                               ),
-                              style: ElevatedButton.styleFrom(
-                                  //     shape: CircleBorder(),
-                                  primary: Color.fromARGB(255, 238, 205, 40)),
-                            ))),
-                      )
-                    ]),
+                              Text(
+                                "Talk to VoCo Bot ",
+                                style: GoogleFonts.lora(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: mediaQuery.size.height * 0.03,
+                                ),
+                              )
+                            ],
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              //     shape: CircleBorder(),
+                              primary: Color.fromARGB(255, 238, 205, 40)),
+                        ))),
+                  )
+                ]),
               ]),
             ),
             SizedBox(
@@ -145,7 +150,7 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco1> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Icon(
-                                  Icons.emoji_people_rounded ,
+                                  Icons.emoji_people_rounded,
                                   color: Color.fromARGB(255, 150, 36, 36),
                                   size: 80.0,
                                 ), // icon

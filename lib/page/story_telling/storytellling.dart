@@ -24,17 +24,18 @@ class _StoryTelling extends State<StoryTelling> {
             child: AppBar(
               leading: Builder(
                 builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {
-                      //push and remove untill home page
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                  );
+                  return TextButton(
+                      onPressed: () async {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (Route<dynamic> route) => false,
+                        );
+                      },
+                      child: Text(
+                        'Home',
+                        style: TextStyle(color: Colors.white),
+                      ));
                 },
               ),
               title: Text(
@@ -43,8 +44,14 @@ class _StoryTelling extends State<StoryTelling> {
                     fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
               ),
               actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                TextButton(
+                    onPressed: () async {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text(
+                      'Back',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             )),
         body: SafeArea(
@@ -104,7 +111,11 @@ class _StoryTelling extends State<StoryTelling> {
                                     //     new MaterialPageRoute(
                                     //         builder: (context) =>
                                     //             new Talkwithvoco1()));
-                                    print('Button pressed ...');
+                                    Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) =>
+                                                new storytelling2()));
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Color.fromARGB(248, 68, 211, 90),
@@ -137,12 +148,12 @@ class _StoryTelling extends State<StoryTelling> {
                           child: SizedBox(
                               child: ElevatedButton(
                                   onPressed: () {
-                                    // Navigator.push(
-                                    //     context,
-                                    //     new MaterialPageRoute(
-                                    //         builder: (context) =>
-                                    //             new Talkwithvoco1()));
-                                    print('Button pressed ...');
+                                    Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) =>
+                                                new storytelling2()));
+                                    // print('Button pressed ...');
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Color.fromARGB(248, 156, 208, 52),
@@ -161,7 +172,12 @@ class _StoryTelling extends State<StoryTelling> {
                           child: SizedBox(
                               child: ElevatedButton(
                                   onPressed: () {
-                                    print('Button pressed ...');
+                                    // print('Button pressed ...');
+                                    Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) =>
+                                                new storytelling2()));
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Color.fromARGB(248, 212, 255, 251),
