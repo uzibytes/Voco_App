@@ -45,6 +45,7 @@ class _Demo2WidgetState extends State<HomePage> {
                       'Home',
                       style: TextStyle(color: Colors.white),
                     ));
+                    
               },
             ),
 
@@ -321,10 +322,40 @@ _handleCommand(Map<String, dynamic> command, BuildContext context) async {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => Talkwithvoco1()));
       break;
+
+    // case "exit":
+    //   Navigator.pushAndRemoveUntil(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => HomePage()),
+    //     (Route<dynamic> route) => false,
+    //   );
+    //   break;
     case "Story":
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => StoryTelling()));
       break;
+    // case "home":
+    //   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    //   List<String> quotes = [];
+    //   final collections = await _firestore.collection('sentences');
+    //   await collections.get().then(
+    //     (value) {
+    //       value.docs.forEach(
+    //         (element) {
+    //           print(element.data().length);
+    //           final docs = element.data();
+    //           docs.forEach((key, value) {
+    //             print(key);
+    //             print(value);
+    //             quotes.add(value);
+    //           });
+    //         },
+    //       );
+    //     },
+    //   );
+    //   Navigator.of(context)
+    //       .push(MaterialPageRoute(builder: (context) => HomePage()));
+    //   break;
     case "Games":
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => Games()));
@@ -352,7 +383,9 @@ _handleCommand(Map<String, dynamic> command, BuildContext context) async {
       Navigator.of(context).pop(true);
 
       break;
+
     default:
       debugPrint("unknown command, ${command["command"]}");
+      break;
   }
 }
