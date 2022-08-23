@@ -1,95 +1,186 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
-
-import './quiz.dart';
-import './result.dart';
-
+import 'package:loginuicolors/page/home.dart';
+import 'package:loginuicolors/page/quiz/question.dart';
 
 class StartQuiz extends StatefulWidget {
-const StartQuiz({Key? key}) : super(key: key);
-
-@override
-State<StatefulWidget> createState() {
-	return _StartQuiz();
-}
+  @override
+  _StartQuizState createState() => _StartQuizState();
 }
 
-class _StartQuiz extends State<StartQuiz> {
-final _questions = const [
-    {
-      'questionText': 'Who is prime minister of india?',
-      'answers': [
-        {'text': 'Narendra Modi', 'score': 1},
-        {'text': 'Sonia Gandhi', 'score': 0},
-        {'text': 'Nitish Kumar', 'score': 0},
-        {'text': 'Rahul Gandhi', 'score': 0},
-      ],
-    },
-    {
-      'questionText': 'Who is chief minister of bihar?',
-      'answers': [
-        {'text': 'Lalu Yadav', 'score': 0},
-        {'text': 'Tejasvi Yadav', 'score': 0},
-        {'text': 'Nitish Kumar', 'score': 1},
-        {'text': 'Rabdi devi', 'score': 0},
-      ],
-    },
-    {
-      'questionText': 'Who is president of india?',
-      'answers': [
-        {'text': 'RamNath kovind', 'score': 0},
-        {'text': 'Droupadi Murmu', 'score': 1},
-        {'text': 'Pratibha Patil', 'score': 0},
-        {'text': 'P.Chitambaram', 'score': 0},
-      ],
-    },
+class _StartQuizState extends State<StartQuiz> {
+  var score = 0;
+  var n = 0;
+
+  // you can get this list from fireabase,
+// infirebase u can use key : value so try to do the same here
+  List que_list = [
+    Questions("Voco is for blinds.", true),
+    Questions("Voco is for deafs.", false),
+    Questions("Voco is built with flutter.", true),
+    Questions(
+        "Voco helps people to learn new languages and new technologies.", true),
+    Questions(
+        "Voco helps people to learn new languages and new technologies.", true),
+    Questions(
+        "Voco helps people to learn new languages and new technologies.", true),
   ];
-  var _questionIndex = 0;
-  var _totalScore = 0;
 
-  void _resetQuiz() {
+  void checkAnswer(bool choice, BuildContext ctx) {
+    if (choice == que_list[n].ans) {
+      //debugPrint("Correct");
+      score = score + 1;
+      final snackbar = SnackBar(
+        content: Text("Correct Answer"),
+        duration: Duration(milliseconds: 500),
+        backgroundColor: Colors.green,
+      );
+      Scaffold.of(ctx).showSnackBar(snackbar);
+    } else {
+      final snackbar = SnackBar(
+        content: Text("Wrong Answer"),
+        duration: Duration(milliseconds: 500),
+        backgroundColor: Colors.red,
+      );
+      Scaffold.of(ctx).showSnackBar(snackbar);
+    }
     setState(() {
-      _questionIndex = 0;
-      _totalScore = 0;
+      if (n < que_list.length - 1) {
+        n = n + 1;
+      } else {
+        // show modail dailog with score
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Quiz Completed"),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    score >= que_list.length / 2
+                        ? Icon(Icons.check_circle,
+                            color: Colors.green, size: 50)
+                        : Icon(Icons.cancel, color: Colors.red, size: 50),
+                    Text("Score $score/${que_list.length}"),
+                  ],
+                ),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text("Close"),
+                    onPressed: () {
+                      reset();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  FlatButton(
+                    child: Text("Go to Home page"),
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (BuildContext context) => HomePage()));
+                    },
+                  )
+                ],
+              );
+            });
+      }
     });
   }
 
-  void _answerQuestion(int score) {
-    // var aBool = true;
-    // aBool = false;
-
-    _totalScore += score;
-
+  void reset() {
     setState(() {
-      _questionIndex = _questionIndex + 1;
+      n = 0;
+      score = 0;
     });
-    print(_questionIndex);
-    if (_questionIndex < _questions.length) {
-      print('We have more questions!');
-    } else {
-      print('No more questions!');
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    // var dummy = const ['Hello'];
-    // dummy.add('Max');
-    // print(dummy);
-    // dummy = [];
-    // questions = []; // does not work if questions is a const
-
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('My First App'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Quiz"),
+      ),
+      body: Builder(
+        builder: (ctx) => Container(
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text(
+                    "Score : $score/${que_list.length} ",
+                    style: TextStyle(
+                      color: Colors.brown,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => reset(),
+                    child: Text(
+                      "Reset ",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                height: 100,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  border: Border.all(color: Colors.brown),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      '${n + 1}.  ${que_list[n].que}',
+                      style: TextStyle(fontSize: 15.0),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  RaisedButton(
+                    child: Text(
+                      "True",
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
+                    padding: EdgeInsets.fromLTRB(50, 15, 50, 15),
+                    onPressed: () => checkAnswer(true, ctx),
+                    color: Colors.green,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                  ),
+                  RaisedButton(
+                    child: Text(
+                      "False",
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
+                    padding: EdgeInsets.fromLTRB(50, 15, 50, 15),
+                    onPressed: () => checkAnswer(false, ctx),
+                    color: Colors.red,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        body: _questionIndex < _questions.length
-            ? Quiz(
-                answerQuestion: _answerQuestion,
-                questionIndex: _questionIndex,
-                questions: _questions,
-              )
-            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
