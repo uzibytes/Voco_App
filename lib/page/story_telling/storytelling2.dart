@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loginuicolors/page/home.dart';
+import 'package:loginuicolors/page/quiz/StartQuiz.dart';
 import 'package:loginuicolors/page/ui/comingsoon.dart';
 
 // import 'package:loginuicolors/page/story_telling/storytelling2.dart';
@@ -137,7 +138,7 @@ class _StoryTelling2 extends State<storytelling2> {
                                             context,
                                             new MaterialPageRoute(
                                                 builder: (context) =>
-                                                    new comingsoon()));
+                                                    new StartQuiz()));
                                         print('Button pressed ...');
                                       },
                                       style: ElevatedButton.styleFrom(
