@@ -7,6 +7,7 @@ import 'package:loginuicolors/page/home.dart';
 import 'package:loginuicolors/page/form/form.dart';
 import 'package:loginuicolors/page/login/LoginHome.dart';
 import 'package:loginuicolors/page/pronunciation_guide/guidep2.dart';
+import 'package:loginuicolors/page/quiz/StartQuiz.dart';
 import 'package:loginuicolors/page/story_telling/storytellling.dart';
 import 'package:loginuicolors/page/story_telling/storytelling2.dart';
 import 'package:loginuicolors/page/ui/comingsoon.dart';
@@ -48,6 +49,7 @@ void main() async {
         'StoryTelling': (context) => StoryTelling(),
         'StoryTelling2': (context) => storytelling2(),
         'ComingSoon': (context) => comingsoon(),
+        'StartQuiz': (context) => StartQuiz(),
       },
     ),
   );

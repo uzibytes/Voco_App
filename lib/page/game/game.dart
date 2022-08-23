@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:loginuicolors/page/home.dart';
+
 import 'package:loginuicolors/page/ui/comingsoon.dart';
 
 class Games extends StatefulWidget {
@@ -23,17 +23,12 @@ class _Games extends State<Games> {
             child: AppBar(
               leading: Builder(
                 builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {
-                      //push and remove untill home page
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                  );
+                  return TextButton(
+                      onPressed: () async {},
+                      child: Text(
+                        'Home',
+                        style: TextStyle(color: Colors.white),
+                      ));
                 },
               ),
               title: Text(
@@ -42,8 +37,14 @@ class _Games extends State<Games> {
                     fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
               ),
               actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                TextButton(
+                    onPressed: () async {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text(
+                      'Back',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             )),
         body: SafeArea(
@@ -83,13 +84,18 @@ class _Games extends State<Games> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Color.fromARGB(248, 212, 255, 251),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
                                   ),
                                   child: Text(
                                     "Animal sound",
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.normal,
+                                      fontSize: mediaQuery.size.width * 0.05,
                                     ),
                                   )))),
                       Container(
@@ -107,13 +113,18 @@ class _Games extends State<Games> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Color.fromARGB(248, 212, 255, 251),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
                                   ),
                                   child: Text(
                                     "game2",
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.normal,
+                                      fontSize: mediaQuery.size.width * 0.05,
                                     ),
                                   )))),
                     ]),
@@ -145,13 +156,18 @@ class _Games extends State<Games> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Color.fromARGB(248, 212, 255, 251),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
                                   ),
                                   child: Text(
                                     "game3",
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.normal,
+                                      fontSize: mediaQuery.size.width * 0.05,
                                     ),
                                   )))),
                       Container(
@@ -169,13 +185,18 @@ class _Games extends State<Games> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Color.fromARGB(248, 212, 255, 251),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
                                   ),
                                   child: Text(
                                     "game4",
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.normal,
+                                      fontSize: mediaQuery.size.width * 0.05,
                                     ),
                                   )))),
                     ]),

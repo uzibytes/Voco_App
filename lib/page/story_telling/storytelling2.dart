@@ -27,17 +27,18 @@ class _StoryTelling2 extends State<storytelling2> {
             child: AppBar(
               leading: Builder(
                 builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {
-                      //push and remove untill home page
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                  );
+                  return TextButton(
+                      onPressed: () async {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (Route<dynamic> route) => false,
+                        );
+                      },
+                      child: Text(
+                        'Home',
+                        style: TextStyle(color: Colors.white),
+                      ));
                 },
               ),
               title: Text(
@@ -46,8 +47,14 @@ class _StoryTelling2 extends State<storytelling2> {
                     fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
               ),
               actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                TextButton(
+                    onPressed: () async {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text(
+                      'Back',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             )),
         body: SafeArea(
@@ -115,7 +122,7 @@ class _StoryTelling2 extends State<storytelling2> {
                 ),
                 Container(
                   width: mediaQuery.size.width * 1,
-                  height: mediaQuery.size.height * 0.39,
+                  height: mediaQuery.size.height * 0.35,
                   child: Column(children: [
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -151,8 +158,13 @@ class _StoryTelling2 extends State<storytelling2> {
                               height: mediaQuery.size.height * 0.33,
                               child: SizedBox(
                                   child: ElevatedButton(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => HomePage()),
+                                          (Route<dynamic> route) => false,
+                                        );
                                       },
                                       style: ElevatedButton.styleFrom(
                                         primary:

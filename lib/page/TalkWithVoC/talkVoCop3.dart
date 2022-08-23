@@ -27,17 +27,18 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco3> {
             child: AppBar(
               leading: Builder(
                 builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {
-                      //push and remove untill home page
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                  );
+                  return TextButton(
+                      onPressed: () async {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (Route<dynamic> route) => false,
+                        );
+                      },
+                      child: Text(
+                        'Home',
+                        style: TextStyle(color: Colors.white),
+                      ));
                 },
               ),
               title: Text(
@@ -46,8 +47,14 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco3> {
                     fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),
               ),
               actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                TextButton(
+                    onPressed: () async {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text(
+                      'Back',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             )),
         body: SafeArea(
@@ -72,12 +79,9 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco3> {
                       Container(
                         width: mediaQuery.size.width * 0.9,
                         height: mediaQuery.size.height * 0.37,
-                        
                         child: Container(
-                          
                             width: mediaQuery.size.width * 0.48,
                             height: mediaQuery.size.height * 0.39,
-                            
                             child: SizedBox(
                                 child: ElevatedButton(
                               onPressed: () {},
