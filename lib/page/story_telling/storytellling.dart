@@ -197,12 +197,12 @@ class _StoryTelling extends State<StoryTelling> {
                 width: mediaQuery.size.width * 0.8,
                 height: mediaQuery.size.height * 0.04,
                 child: Text(
-                  "  only one story per day",
+                  "  Get 4 new stories Everyday",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lora(
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold,
-                    fontSize: mediaQuery.size.height * 0.03,
+                    fontSize: mediaQuery.size.height * 0.023,
                   ),
                 )),
           ]),

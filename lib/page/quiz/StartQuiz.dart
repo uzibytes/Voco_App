@@ -67,7 +67,7 @@ class _StartQuizState extends State<StartQuiz> {
                 ),
                 actions: <Widget>[
                   FlatButton(
-                    child: Text("Close"),
+                    child: Text("Reset Quiz"),
                     onPressed: () {
                       reset();
                       Navigator.of(context).pop();
