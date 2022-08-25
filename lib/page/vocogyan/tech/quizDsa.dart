@@ -8,14 +8,14 @@ import '../quiz/StartQuiz.dart';
 
 // import 'package:loginuicolors/page/story_telling/storytelling2.dart';
 
-class storytelling2 extends StatefulWidget {
-  const storytelling2({Key? key}) : super(key: key);
+class DsaQuiz extends StatefulWidget {
+  const DsaQuiz({Key? key}) : super(key: key);
 
   @override
-  _StoryTelling2 createState() => _StoryTelling2();
+  _DsaQuiz createState() => _DsaQuiz();
 }
 
-class _StoryTelling2 extends State<storytelling2> {
+class _DsaQuiz extends State<DsaQuiz> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -92,7 +92,7 @@ class _StoryTelling2 extends State<storytelling2> {
                           //add text in center
                           child: Center(
                             child: Text(
-                              "Story",
+                              "Linked List",
                               style: GoogleFonts.lora(
                                   fontStyle: FontStyle.italic,
                                   fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class _StoryTelling2 extends State<storytelling2> {
                           Container(
                               child: Column(children: [
                             Container(
-                              width: mediaQuery.size.width * 0.9,
+                              width: mediaQuery.size.width * 0.88,
                               height: mediaQuery.size.height * 0.41,
                               //add text
 
@@ -118,11 +118,11 @@ class _StoryTelling2 extends State<storytelling2> {
                               child: new SingleChildScrollView(
                                 scrollDirection: Axis.vertical,
                                 child: Text(
-                                  "The Potato, The Egg, And The Coffee Beans.Let’s start with this inspirational moral story that teaches a valuable life lesson!  A boy named John was upset. His father found him crying.   When his father asked John why he was crying, he said that he had a lot of problems in his life.  His father simply smiled and asked him to get a potato, an egg, and some coffee beans. He placed them in three bowls.  He then asked John to feel their texture and then fill each bowl with water.  John did as he had been told. His father then boiled all three bowls.  Once the bowls had cooled down, John’s father asked him to feel the texture of the different food items again.  John noticed that the potato had become soft and its skin was peeling off easily; the egg had become harder; the coffee beans had completely changed and filled the bowl of water with aroma and flavour.  Moral of the story Life will always have problems and pressures, like the boiling water in the story. It’s how you respond and react to these problems that counts the most!",
+                                  "In computer science, a linked list is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence.",
                                   style: GoogleFonts.oswald(
                                     // fontStyle: FontStyle.italic,
                                     // fontWeight: FontWeight.bold,
-                                    fontSize: mediaQuery.size.height * 0.02,
+                                    fontSize: mediaQuery.size.height * 0.03,
                                   ),
                                 ),
                               ),

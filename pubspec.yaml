@@ -45,6 +45,12 @@ dependencies:
   flutter_sound_record: ^3.2.1
   audioplayers: ^1.0.1
   flutter_tts: ^3.5.0
+  flutter_launcher_icons: "^0.10.0"
+
+flutter_icons:
+  android: true
+  # ios: true
+  image_path: "assets/iconvoco.png"
 
 dev_dependencies:
   flutter_test:

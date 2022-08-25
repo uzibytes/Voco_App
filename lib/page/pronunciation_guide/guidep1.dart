@@ -195,11 +195,23 @@ class _Demo2WidgetState extends State<PronucitionGuide> {
                     ],
                   ),
                 ),
-                // SizedBox(
-                //   height: mediaQuery.size.height * 0.06,
+                // Container(
+                //   height: mediaQuery.size.height * 0.04,
+                //   width: mediaQuery.size.width * 1,
+                //   // color: Color.fromARGB(255, 199, 52, 52),
+                //   //add text
+                //   child: Text(
+                //     'mic is on',
+                //     style: GoogleFonts.lora(
+                //       fontStyle: FontStyle.italic,
+                //       fontWeight: FontWeight.bold,
+                //       fontSize: mediaQuery.size.height * 02,
+                //       color: Color.fromARGB(255, 84, 11, 11),
+                //     ),
+                //   ),
                 // ),
                 SizedBox(
-                    height: mediaQuery.size.height * 0.4,
+                    height: mediaQuery.size.height * 0.35,
                     child: GestureDetector(
                       onTap: () async {
                         if (!_isRecording) {
