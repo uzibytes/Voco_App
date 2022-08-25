@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loginuicolors/page/home.dart';
-import 'package:loginuicolors/page/ui/comingsoon.dart';
+// import 'package:loginuicolors/page/ui/comingsoon.dart';
 import '../quiz/StartQuiz.dart';
 
 // import 'package:loginuicolors/page/story_telling/storytelling2.dart';
@@ -77,15 +77,15 @@ class _StoryTelling2 extends State<storytelling2> {
                           Container(
                               child: Column(children: [
                             Container(
-                              width: mediaQuery.size.width * 0.9,
-                              height: mediaQuery.size.height * 0.39,
-                              color: Color.fromARGB(255, 249, 217, 217),
+                              width: mediaQuery.size.width * 0.96,
+                              height: mediaQuery.size.height * 0.4,
+                              color: Color.fromARGB(255, 245, 245, 245),
                               child: Text(
-                                "4(c)(i)",
-                                style: GoogleFonts.lora(
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: mediaQuery.size.height * 0.02,
+                                "The Potato, The Egg, And The Coffee Beans.Let’s start with this inspirational moral story that teaches a valuable life lesson!  A boy named John was upset. His father found him crying.   When his father asked John why he was crying, he said that he had a lot of problems in his life.  His father simply smiled and asked him to get a potato, an egg, and some coffee beans. He placed them in three bowls.  He then asked John to feel their texture and then fill each bowl with water.  John did as he had been told. His father then boiled all three bowls.  Once the bowls had cooled down, John’s father asked him to feel the texture of the different food items again.  John noticed that the potato had become soft and its skin was peeling off easily; the egg had become harder; the coffee beans had completely changed and filled the bowl of water with aroma and flavour.  Moral of the story Life will always have problems and pressures, like the boiling water in the story. It’s how you respond and react to these problems that counts the most!",
+                                style: GoogleFonts.oswald(
+                                  // fontStyle: FontStyle.italic,
+                                  // fontWeight: FontWeight.bold,
+                                  fontSize: mediaQuery.size.height * 0.016,
                                 ),
                               ),
                             ),
@@ -110,20 +110,18 @@ class _StoryTelling2 extends State<storytelling2> {
                         ]),
                   ]),
                 ),
-                SizedBox(
-                  width: mediaQuery.size.width * 1,
-                  height: mediaQuery.size.height * 0.02,
-                ),
+                // SizedBox(
+                //   width: mediaQuery.size.width * 1,
+                //   height: mediaQuery.size.height * 0.02,
+                // ),
                 Container(
-                  width: mediaQuery.size.width * 1,
-                  height: mediaQuery.size.height * 0.39,
                   child: Column(children: [
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           Container(
                               width: mediaQuery.size.width * 0.48,
-                              height: mediaQuery.size.height * 0.33,
+                              height: mediaQuery.size.height * 0.36,
                               child: SizedBox(
                                   child: ElevatedButton(
                                       onPressed: () {
@@ -149,10 +147,18 @@ class _StoryTelling2 extends State<storytelling2> {
                                       )))),
                           Container(
                               width: mediaQuery.size.width * 0.48,
-                              height: mediaQuery.size.height * 0.33,
+                              height: mediaQuery.size.height * 0.36,
                               child: SizedBox(
                                   child: ElevatedButton(
                                       onPressed: () {
+                                        //go to home
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => HomePage()),
+                                          (Route<dynamic> route) => false,
+                                        );
+
                                         print('Button pressed ...');
                                       },
                                       style: ElevatedButton.styleFrom(
