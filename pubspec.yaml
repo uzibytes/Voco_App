@@ -46,6 +46,8 @@ dependencies:
   audioplayers: ^1.0.1
   flutter_tts: ^3.5.0
   flutter_launcher_icons: "^0.10.0"
+  feedback: ^2.5.0
+  url_launcher: ^6.1.5
 
 flutter_icons:
   android: true
@@ -63,6 +65,7 @@ dev_dependencies:
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
+  # the material Icons class.
   # the material Icons class.
   uses-material-design: true
 
