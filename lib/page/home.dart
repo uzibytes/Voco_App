@@ -103,7 +103,7 @@ class _Demo2WidgetState extends State<HomePage> {
                           width: mediaQuery.size.width * 0.48,
                           height: mediaQuery.size.height * 0.38,
                           child: SizedBox(
-                            child: ElevatedButton(``
+                            child: ElevatedButton(
                               onPressed: () async {
                                 final collections =
                                     _firestore.collection('sentences');
