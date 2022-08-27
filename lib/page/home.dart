@@ -6,8 +6,10 @@ import 'package:loginuicolors/page/TalkWithVoC/talkVoCop1.dart';
 import 'package:loginuicolors/page/game/game.dart';
 import 'package:loginuicolors/page/login/login.dart';
 import 'package:loginuicolors/page/pronunciation_guide/guidep1.dart';
-import 'package:loginuicolors/page/story_telling/storytellling.dart';
+import 'package:loginuicolors/page/vocogyan/story1.dart';
+// import 'package:loginuicolors/page/story_telling/storytellling.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:loginuicolors/page/ui/comingsoon.dart';
 // import 'package:alan_voice/alan_voice.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,7 +47,6 @@ class _Demo2WidgetState extends State<HomePage> {
                       'Home',
                       style: TextStyle(color: Colors.white),
                     ));
-                    
               },
             ),
 
@@ -209,8 +210,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                 Navigator.push(
                                     context,
                                     new MaterialPageRoute(
-                                        builder: (context) =>
-                                            new StoryTelling()));
+                                        builder: (context) => new vocogyan()));
                                 print('Button pressed ...');
                               },
                               style: ElevatedButton.styleFrom(
@@ -219,7 +219,7 @@ class _Demo2WidgetState extends State<HomePage> {
                                     borderRadius: BorderRadius.circular(30)),
                               ),
                               child: Text(
-                                "Story Telling",
+                                "VoCo Gyan",
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.lora(
                                   color: Colors.black,
@@ -278,7 +278,7 @@ class _Demo2WidgetState extends State<HomePage> {
 setupAlan(BuildContext context) {
   /// Init Alan Button with project key from Alan Studio
   AlanVoice.addButton(
-    "1339c43dc0367460eef225d7d1238ada2e956eca572e1d8b807a3e2338fdd0dc/stage",
+    "a9aafa94367ae846d5a3ee4d8ef865a52e956eca572e1d8b807a3e2338fdd0dc/stage",
     buttonAlign: AlanVoice.BUTTON_ALIGN_LEFT,
   );
 
@@ -330,9 +330,9 @@ _handleCommand(Map<String, dynamic> command, BuildContext context) async {
     //     (Route<dynamic> route) => false,
     //   );
     //   break;
-    case "Story":
+    case "Gyan":
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => StoryTelling()));
+          .push(MaterialPageRoute(builder: (context) => vocogyan()));
       break;
     // case "home":
     //   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -359,6 +359,14 @@ _handleCommand(Map<String, dynamic> command, BuildContext context) async {
     case "Games":
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => Games()));
+      break;
+    case "NTechnical":
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => comingsoon()));
+      break;
+    case "Technical":
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => comingsoon()));
       break;
     case "back":
       final FirebaseFirestore _firestore = FirebaseFirestore.instance;

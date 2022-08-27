@@ -18,149 +18,69 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco2> {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.of(context);
+    // var mediaQuery = MediaQuery.of(context);
     return Scaffold(
-        key: scaffoldKey,
-        // backgroundColor: Color(0xFFF1F8F4),
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(60.0), // here the desired height
-            child: AppBar(
-              leading: Builder(
-                builder: (BuildContext context) {
-                  return TextButton(
-                      onPressed: () async {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                          (Route<dynamic> route) => false,
-                        );
-                      },
-                      child: Text(
-                        'Home',
-                        style: TextStyle(color: Colors.white),
-                      ));
-                },
-              ),
-              title: Text(
-                " Talk with VoCo",
-                style: GoogleFonts.lora(
-                    fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),
-              ),
-              actions: <Widget>[
-                TextButton(
+      key: scaffoldKey,
+      // backgroundColor: Color(0xFFF1F8F4),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60.0), // here the desired height
+          child: AppBar(
+            leading: Builder(
+              builder: (BuildContext context) {
+                return TextButton(
                     onPressed: () async {
-                      Navigator.of(context).pop(true);
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                        (Route<dynamic> route) => false,
+                      );
                     },
                     child: Text(
-                      'Back',
+                      'Home',
                       style: TextStyle(color: Colors.white),
-                    ))
-              ],
-            )),
-        body: SafeArea(
-            child: Container(
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: <
-              Widget>[
-            Container(
-              color: Color.fromARGB(117, 240, 234, 234),
-              width: mediaQuery.size.width * 1,
-              height: mediaQuery.size.height * 0.04,
+                    ));
+              },
             ),
-            Container(
-              height: mediaQuery.size.height * 0.39,
-              // color: Colors.black,
-              child: Column(children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        width: mediaQuery.size.width * 0.9,
-                        height: mediaQuery.size.height * 0.37,
-                        child: Container(
-                            width: mediaQuery.size.width * 0.48,
-                            height: mediaQuery.size.height * 0.39,
-                            child: SizedBox(
-                                child: ElevatedButton(
-                              onPressed: () {},
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Container(
-                                    height: mediaQuery.size.height * 0.12,
-                                    width: mediaQuery.size.width * 0.6,
-                                    // color: Colors.black26,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/roboticsvoco.png'),
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    "Talk to VoCo Bot 4(b) i",
-                                    style: GoogleFonts.lora(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 15.0,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              //style: ElevatedButton.styleFrom(
-                              //     shape: CircleBorder(),
-                              //A  primary: Color.fromARGB(255, 238, 205, 40)),
-                            ))),
-                      )
-                    ]),
-              ]),
+            title: Text(
+              " Talk with VoCo",
+              style: GoogleFonts.lora(
+                  fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
-              height: mediaQuery.size.height * 0.02,
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () async {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: Text(
+                    'Back',
+                    style: TextStyle(color: Colors.white),
+                  ))
+            ],
+          )),
+      body: SafeArea(
+          child: Container(
+              child: Container(
+        // Add text
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "welcome to VoCo",
+              // Listen to the Guide carefully, the screen is divided into 4 quadrants. Click top left for Pronunciation Guide, Click top right for Talking with Voco, Click bottom left for Story Telling, Click bottom right for Games.
+              style: GoogleFonts.lora(
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+                color: Colors.yellow,
+                fontSize: 1,
+              ),
             ),
-            Container(
-              height: mediaQuery.size.height * 0.39,
-              // color: Colors.black,
-              child: Column(children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                          width: mediaQuery.size.width * 0.9,
-                          height: mediaQuery.size.height * 0.37,
-                          color: Color.fromARGB(255, 249, 217, 217),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.bolt,
-                                  color: Color.fromARGB(255, 150, 36, 36),
-                                  size: 80.0,
-                                ), // icon
-                                Text(
-                                  "Talk to VoCo Bot",
-                                  style: GoogleFonts.lora(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 15.0,
-                                  ),
-                                )
-                              ],
-                            ),
-                            style: ElevatedButton.styleFrom(
-                                //     shape: CircleBorder(),
-                                primary: Color.fromARGB(255, 217, 132, 111)),
-                          )),
-                    ]),
-              ]),
-            ),
-          ]),
-        )));
+          ],
+        ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/bot.png'), fit: BoxFit.cover),
+        ),
+      ))),
+    );
   }
 }

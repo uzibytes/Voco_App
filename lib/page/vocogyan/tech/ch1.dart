@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:loginuicolors/page/story_telling/storytelling2.dart';
+// import 'package:loginuicolors/page/story_telling/storytelling2.dart';
 
 import 'package:loginuicolors/page/ui/comingsoon.dart';
+import 'package:loginuicolors/page/vocogyan/tech/DSA.dart';
 
-import '../home.dart';
+import '../../home.dart';
 
-class Games extends StatefulWidget {
-  const Games({Key? key}) : super(key: key);
+class Technical extends StatefulWidget {
+  const Technical({Key? key}) : super(key: key);
 
   @override
-  _Games createState() => _Games();
+  _Technical createState() => _Technical();
 }
 
-class _Games extends State<Games> {
+class _Technical extends State<Technical> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -42,7 +43,7 @@ class _Games extends State<Games> {
                 },
               ),
               title: Text(
-                "   VoCo Games",
+                "   Technical",
                 style: GoogleFonts.lora(
                     fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
               ),
@@ -89,8 +90,7 @@ class _Games extends State<Games> {
                                     Navigator.push(
                                         context,
                                         new MaterialPageRoute(
-                                            builder: (context) =>
-                                                new storytelling2()));
+                                            builder: (context) => new DSA()));
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Color.fromARGB(248, 212, 255, 251),
@@ -99,7 +99,7 @@ class _Games extends State<Games> {
                                             BorderRadius.circular(30)),
                                   ),
                                   child: Text(
-                                    "Story telling",
+                                    "DSA",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
@@ -128,7 +128,7 @@ class _Games extends State<Games> {
                                             BorderRadius.circular(30)),
                                   ),
                                   child: Text(
-                                    "Animal sounds",
+                                    "C++",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
@@ -171,7 +171,7 @@ class _Games extends State<Games> {
                                             BorderRadius.circular(30)),
                                   ),
                                   child: Text(
-                                    "game3",
+                                    "C",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
@@ -200,7 +200,7 @@ class _Games extends State<Games> {
                                             BorderRadius.circular(30)),
                                   ),
                                   child: Text(
-                                    "game4",
+                                    "Flutter",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.lora(
                                       color: Colors.black,

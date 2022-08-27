@@ -28,27 +28,34 @@ class _StoryTelling2 extends State<storytelling2> {
             child: AppBar(
               leading: Builder(
                 builder: (BuildContext context) {
-                  return IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {
-                      //push and remove untill home page
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                  );
+                  return TextButton(
+                      onPressed: () async {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (Route<dynamic> route) => false,
+                        );
+                      },
+                      child: Text(
+                        'Home',
+                        style: TextStyle(color: Colors.white),
+                      ));
                 },
               ),
               title: Text(
-                "VoCo's Story",
+                " Story Telling",
                 style: GoogleFonts.lora(
                     fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
               ),
               actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.arrow_circle_right), onPressed: () => {}),
+                TextButton(
+                    onPressed: () async {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text(
+                      'Back',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             )),
         body: SafeArea(
@@ -68,24 +75,55 @@ class _StoryTelling2 extends State<storytelling2> {
                 ),
                 Container(
                   width: mediaQuery.size.width * 1,
-                  height: mediaQuery.size.height * 0.48,
-                  // color: Colors.black,
+                  height: mediaQuery.size.height * 0.6,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/storytelling.png'),
+                        fit: BoxFit.fill),
+                  ),
                   child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: mediaQuery.size.width * 0.6,
+                          height: mediaQuery.size.height * 0.07,
+                          // color: Colors.white,
+                          //add text in center
+                          child: Center(
+                            child: Text(
+                              "Story",
+                              style: GoogleFonts.lora(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: mediaQuery.size.width * 0.05),
+                              // color: Colors.black),
+                            ),
+                          ),
+                          // color: Color.fromARGB(255, 14, 11, 11),
+                        )
+                      ],
+                    ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           Container(
                               child: Column(children: [
                             Container(
-                              width: mediaQuery.size.width * 0.96,
-                              height: mediaQuery.size.height * 0.4,
-                              color: Color.fromARGB(255, 245, 245, 245),
-                              child: Text(
-                                "The Potato, The Egg, And The Coffee Beans.Let’s start with this inspirational moral story that teaches a valuable life lesson!  A boy named John was upset. His father found him crying.   When his father asked John why he was crying, he said that he had a lot of problems in his life.  His father simply smiled and asked him to get a potato, an egg, and some coffee beans. He placed them in three bowls.  He then asked John to feel their texture and then fill each bowl with water.  John did as he had been told. His father then boiled all three bowls.  Once the bowls had cooled down, John’s father asked him to feel the texture of the different food items again.  John noticed that the potato had become soft and its skin was peeling off easily; the egg had become harder; the coffee beans had completely changed and filled the bowl of water with aroma and flavour.  Moral of the story Life will always have problems and pressures, like the boiling water in the story. It’s how you respond and react to these problems that counts the most!",
-                                style: GoogleFonts.oswald(
-                                  // fontStyle: FontStyle.italic,
-                                  // fontWeight: FontWeight.bold,
-                                  fontSize: mediaQuery.size.height * 0.016,
+                              width: mediaQuery.size.width * 0.9,
+                              height: mediaQuery.size.height * 0.41,
+                              //add text
+
+                              // color: Color.fromARGB(255, 252, 65, 65),
+                              child: new SingleChildScrollView(
+                                scrollDirection: Axis.vertical,
+                                child: Text(
+                                  "The Potato, The Egg, And The Coffee Beans.Let’s start with this inspirational moral story that teaches a valuable life lesson!  A boy named John was upset. His father found him crying.   When his father asked John why he was crying, he said that he had a lot of problems in his life.  His father simply smiled and asked him to get a potato, an egg, and some coffee beans. He placed them in three bowls.  He then asked John to feel their texture and then fill each bowl with water.  John did as he had been told. His father then boiled all three bowls.  Once the bowls had cooled down, John’s father asked him to feel the texture of the different food items again.  John noticed that the potato had become soft and its skin was peeling off easily; the egg had become harder; the coffee beans had completely changed and filled the bowl of water with aroma and flavour.  Moral of the story Life will always have problems and pressures, like the boiling water in the story. It’s how you respond and react to these problems that counts the most!",
+                                  style: GoogleFonts.oswald(
+                                    // fontStyle: FontStyle.italic,
+                                    // fontWeight: FontWeight.bold,
+                                    fontSize: mediaQuery.size.height * 0.02,
+                                  ),
                                 ),
                               ),
                             ),
@@ -121,7 +159,8 @@ class _StoryTelling2 extends State<storytelling2> {
                         children: <Widget>[
                           Container(
                               width: mediaQuery.size.width * 0.48,
-                              height: mediaQuery.size.height * 0.36,
+                              height: mediaQuery.size.height * 0.25,
+                              // color: Color.fromARGB(255, 252, 65, 65),
                               child: SizedBox(
                                   child: ElevatedButton(
                                       onPressed: () {
@@ -147,7 +186,7 @@ class _StoryTelling2 extends State<storytelling2> {
                                       )))),
                           Container(
                               width: mediaQuery.size.width * 0.48,
-                              height: mediaQuery.size.height * 0.36,
+                              height: mediaQuery.size.height * 0.25,
                               child: SizedBox(
                                   child: ElevatedButton(
                                       onPressed: () {
