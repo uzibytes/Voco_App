@@ -75,53 +75,49 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco1> {
               height: mediaQuery.size.height * 0.39,
               // color: Colors.black,
               child: Column(children: [
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: <
-                    Widget>[
-                  Container(
-                    width: mediaQuery.size.width * 0.9,
-                    height: mediaQuery.size.height * 0.37,
-                    child: Container(
-                        width: mediaQuery.size.width * 0.48,
-                        height: mediaQuery.size.height * 0.39,
-                        child: SizedBox(
-                            child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                new MaterialPageRoute(
-                                    builder: (context) => new Talkwithvoco2()));
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Container(
-                                height: mediaQuery.size.height * 0.12,
-                                width: mediaQuery.size.width * 0.6,
-                                // color: Colors.black26,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/roboticsvoco.png'),
-                                  ),
-                                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: mediaQuery.size.width * 0.9,
+                        height: mediaQuery.size.height * 0.37,
+                        child: Container(
+                            width: mediaQuery.size.width * 0.48,
+                            height: mediaQuery.size.height * 0.39,
+                            child: SizedBox(
+                                child: ElevatedButton(
+                              onPressed: () {
+                                // Navigator.push(
+                                //     context,
+                                //     new MaterialPageRoute(
+                                //         builder: (context) =>
+                                //             new Talkwithvoco2()));
+                              },
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.lock,
+                                    color: Color.fromARGB(255, 0, 4, 253),
+                                    size: 80.0,
+                                  ), // icon
+                                  Text(
+                                    "Talk to VoCo Professional",
+                                    style: GoogleFonts.lora(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: mediaQuery.size.height * 0.03,
+                                    ),
+                                  )
+                                ],
                               ),
-                              Text(
-                                "Talk to VoCo Bot ",
-                                style: GoogleFonts.lora(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: mediaQuery.size.height * 0.03,
-                                ),
-                              )
-                            ],
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              //     shape: CircleBorder(),
-                              primary: Color.fromARGB(255, 238, 205, 40)),
-                        ))),
-                  )
-                ]),
+                              style: ElevatedButton.styleFrom(
+                                  //     shape: CircleBorder(),
+                                  primary: Color.fromARGB(255, 238, 205, 40)),
+                            ))),
+                      )
+                    ]),
               ]),
             ),
             SizedBox(

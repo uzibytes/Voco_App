@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loginuicolors/page/TalkWithVoC/talkVoCop2.dart';
 import 'package:loginuicolors/page/home.dart';
+import 'package:loginuicolors/page/ui/comingsoon.dart';
 
 class Talkwithvoco3 extends StatefulWidget {
   const Talkwithvoco3({Key? key}) : super(key: key);
@@ -84,17 +86,23 @@ class _tackwithvoco1WidgetState extends State<Talkwithvoco3> {
                             height: mediaQuery.size.height * 0.39,
                             child: SizedBox(
                                 child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    new MaterialPageRoute(
+                                        builder: (context) =>
+                                            new comingsoon()));
+                              },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Icon(
-                                    Icons.lock,
+                                    Icons.border_top,
                                     color: Color.fromARGB(255, 0, 4, 253),
                                     size: 80.0,
                                   ), // icon
                                   Text(
-                                    "Talk to VoCo Professional",
+                                    "Talk to VoCo Bot",
                                     style: GoogleFonts.lora(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
