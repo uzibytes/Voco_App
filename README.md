@@ -47,13 +47,12 @@ We have implemented these features:
 
 ### Tech Stacks Used :
 ⦿ <b>FrontEnd :</b> 
-* [![Flutter](https://img.shields.io/badge/flutter-ffffff?style=for-the-badge&logo=flutter&logoColor=blue)](https://flutter.dev/)
-* [![Dart](https://img.shields.io/badge/dart-ffffff?style=for-the-badge&logo=dart&logoColor=235f9e)](https://dart.dev/)
+* [![Flutter](https://img.shields.io/badge/flutter-ffffff?style=for-the-badge&logo=flutter&logoColor=blue)](https://flutter.dev/) [![Dart](https://img.shields.io/badge/dart-ffffff?style=for-the-badge&logo=dart&logoColor=235f9e)](https://dart.dev/)
 
 ⦿ <b>BackEnd :</b>
 * [![NodeJS](https://img.shields.io/badge/node.js-35495E?style=for-the-badge&logo=nodedotjs&logoColor=69a063)](https://nodejs.org/)
-* [![ExpressJS](https://img.shields.io/badge/express.js-35495E?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-* [![TypeScript](https://img.shields.io/badge/typescipt-35495E?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+ [![ExpressJS](https://img.shields.io/badge/express.js-35495E?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+ [![TypeScript](https://img.shields.io/badge/typescipt-35495E?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 ⦿ <b>Server :</b>
 * [![GoogleCloud](https://img.shields.io/badge/google_cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)](https://cloud.google.com/)
