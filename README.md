@@ -1,36 +1,104 @@
-# Beautiful Login Page In Flutter
+# <p align="center"><img align="center" width="80" src="./assets/logo-white.png"/> VoCo</p>
+<h2 align="center">Advanced Vocational Training Application 📱</h2>
+<hr>
+<h2 align="center">TEAM VISION : Winner 🏆 Of Smart India Hackathon 2022 (SIH 2022) 🌟</h2>
+<img src="screenshots/winner.JPG"  width="100%"/>
 
-Create a login and signup page in flutter.
+<h2 align="center">COMPLETE DESCRIPTION</h2>
 
-This amazing app is provided in open source. So, helpful contributions are highly appreciated.
+### PS ID : RK774
 
-## ScreenShots
+### Team ID : 23641
 
+### PS Title :
+Software for Vocational Training for persons with visual impairment
 
-| <img src="screenshots/login.jpg"  width="300"/> | <img src="screenshots/register.jpg" width="300"/>  |
+### PS Description :
+<b>Background:</b> A web/app based solution required for vocational training for persons with visual impairment. It would have greater accessibility support and a better user interface.
 
----
+<b>Situation:</b> Currently no such software is available for persons with visual impairment. Further because of their mobility, it is difficult for them to get offline vocational training. Such software will enable them to get suitable vocational training in the area of their interest and will enable them to become self dependent.
 
-### :heart: Found this project useful?
+<b>Objective:</b> A web/app based platform such as PWAs, offline first applications which helps visually impaired persons accessibility to vocational training smoothly.
 
-If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
+### Aim :
+1. To Break Linguistic Barrier Between People With And Without Vision & Provide a Better Community Support.
+2. To Reach a specific Audience to Improve their Vocational Skills  And Help Them to Get Better Jobs and Societal acceptance. 
+
+### Summary :
+The mobile app will have features such as to improve the vocal speech of the user, enhance subject knowledge, interactive live session with expert or bot and fun interactive games to train their mind. The app has very easy to use layout setup with voice powered in-app navigation support. 
+
+### Objectives :
+1. Train the user to improve their linguistic skills or learn new language.
+2. The app will also provide study material and courses in audio format to be accessed easily.
+3. Regular tests for our users to understand their improvement.
+4. A proper feedback system for us to understand whether the user liked our course content or not.
+5. Interactive chat bot feature in case the user wants someone to talk with when no one is around.
+6. A feature to connect all the users together at real-time and they can have a conversation among themselves. This will improve their communication skills and can provide them recreational time with some new friends.
+7. An option to even connect with a VoCo Expert to clear course related doubts and any queries they might have.
+8. Fun and interactive games section to improve their mental ability and train their mind.
+9. To improve the UI for more easy usability for the visually impaired people.
+
+### Status :
+We have implemented these features:
+  1. User Login through Firebase
+  2. Pronunciation Guide available with support in English language.
+  3. In app navigation supported.
+  4. In app voice based guide available.
+
+### Tech Stacks Used :
+⦿ <b>FrontEnd :</b> Flutter, Dart
+
+⦿ <b>BackEnd :</b> NodeJS, ExpressJS, TypeScript
+
+⦿ <b>Server :</b> Google Cloud
+
+⦿ <b>Database :</b> Firebase
+
+### Important URLS :
+⭐️ <b>Main PPT :</b> [Click Here to View](https://www.canva.com/design/DAFKY0ISCIc/Dc9_AccjIlpIO0fpXs7zAg/edit)
+
+⭐️ <b>Video : Understanding VoCo</b>
+
+[![Watch the video](https://img.youtube.com/vi/SotVdWlF0qk/hqdefault.jpg)](https://youtu.be/SotVdWlF0qk)
+
+⭐️ <b>Video : VoCo App Guide</b>
+
+[![Watch the video](https://img.youtube.com/vi/JdDHJDz9RwU/hqdefault.jpg)](https://youtu.be/JdDHJDz9RwU)
+
+⭐️ <b>Research Proposal :</b> [Click Here to View](https://drive.google.com/file/d/1IWLqan4KK0uA738anxIMGWorU3y1yo0H/view?usp=sharing)
+
+⭐️ <b>Initial Basic Blue Print :</b> [Click Here to View](https://drive.google.com/file/d/1DbnphCEYUreNn5E48bvN6N0b3pgw_8ib/view?usp=sharing)
+
+⭐️ <b>Extra : You can also watch our fun VLOG 😅</b>
+
+[![Watch the video](https://img.youtube.com/vi/XQbKl_6FldM/mqdefault.jpg)](https://youtu.be/XQbKl_6FldM)
 
 ---
 
 ## Project Created & Maintained By
 
-## BCE/Team Vision
+## :heart: Team Vision
+1. Krishna Raj
+2. Ujjwal Raj
+3. Rajnish Puri
+4. Prashant Kumar
+5. Shubham Kumar
+6. Aradhana Kumari
 
-<a href="https://twitter.com/sidd_art_"><img src="https://github.com/aritraroy/social-icons/blob/master/twitter-icon.png?raw=true" width="60"></a>
-<a href="https://linkedin.com/in/siddharthchopra1/"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
-<a href="https://instagram.com/siddharth_chopra"><img src="https://github.com/aritraroy/social-icons/blob/master/instagram-icon.png?raw=true" width="60"></a>
+### How-to-run
 
+- Clone this Repository.
+- Install Flutter in your local.
+- Open the cloned repository in VS Code
+- Enter command - `flutter clean` at first.
+- Then Enter Command - `flutter run` to start the application in your local emulator.
 
+## Support
 
-## Getting Started
+💙 If you like this project, give it a ⭐ and share it with friends!
+You are free to send us PRs and issues, We'd love to help and improve this.
 
-This project is a starting point for a Flutter application.
+<h1 align="center">🙏 THANK YOU 🙏</h1>
 
-- clone repo and setup dart plugin
-
+![Typing SVG](https://readme-typing-svg.demolab.com?font=Oldenburg&color=67F7AD&lines=Best+Wishes+from+Team+Vision)
 
