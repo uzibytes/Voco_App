@@ -86,7 +86,7 @@ We have implemented these features:
 ## :heart: Team Vision
 1. Krishna Raj
 2. Ujjwal Raj
-3. Rajnish Puri
+3. [Rajnish Puri](https://github.com/RajnishPuri)
 4. Prashant Kumar
 5. Shubham Kumar
 6. Aradhana Kumari
