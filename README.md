@@ -61,6 +61,8 @@ We have implemented these features:
 * [![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
 
 ### Important URLS :
+⭐️ <b>VoCo.apk :</b> [Click Here to download our app](https://drive.google.com/file/d/1G2OAgv496ZIgfTvQDB9stnZZdOtdA90W/view?usp=sharing)
+
 ⭐️ <b>Main PPT :</b> [Click Here to View](https://www.canva.com/design/DAFKY0ISCIc/Dc9_AccjIlpIO0fpXs7zAg/edit)
 
 ⭐️ <b>Video : Understanding VoCo</b>
@@ -84,12 +86,20 @@ We have implemented these features:
 ## Project Created & Maintained By
 
 ## :heart: Team Vision
-1. Krishna Raj
-2. Ujjwal Raj
+1. [Krishna Raj](https://github.com/krishna-raz)
+2. [Ujjwal Raj](https://github.com/uzibytes)
 3. [Rajnish Puri](https://github.com/RajnishPuri)
-4. Prashant Kumar
-5. Shubham Kumar
+4. [Prashant Kumar](https://github.com/PkThunderBolt)
+5. [Shubham Kumar](https://github.com/ItsWhiteDevil)
 6. Aradhana Kumari
+
+### Hire Us
+<a href="https://www.linkedin.com/in/ujjwal-raj-b2545a213/"> <img src="https://img.shields.io/badge/ujjwal-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn"></a>
+<a href="https://www.linkedin.com/in/iamkrishnaraj/"> <img src="https://img.shields.io/badge/krishna-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn"></a>
+<a href="https://www.linkedin.com/in/rajnish-puri-804b11209/"> <img src="https://img.shields.io/badge/rajnish-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn"></a>
+<a href="https://www.linkedin.com/in/prashant-kumar-426775213/"> <img src="https://img.shields.io/badge/prashant-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn"></a>
+<a href="https://www.linkedin.com/in/shubham-kumar-0b44071b8/"> <img src="https://img.shields.io/badge/shubham-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn"></a>
+<a href="https://www.linkedin.com/in/aradhana-kumari-62b634218/"> <img src="https://img.shields.io/badge/aradhana-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn"></a>
 
 ### How-to-run
 
@@ -98,6 +108,7 @@ We have implemented these features:
 - Open the cloned repository in VS Code
 - Enter command - `flutter clean` at first.
 - Then Enter Command - `flutter run` to start the application in your local emulator.
+- Or you can directly use our application on your android phone by downloading the apk [link](https://drive.google.com/file/d/1G2OAgv496ZIgfTvQDB9stnZZdOtdA90W/view?usp=sharing).
 
 ## Support
 
