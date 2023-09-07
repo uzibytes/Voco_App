@@ -3,7 +3,6 @@
 <hr>
 <h2 align="center">TEAM VISION : Winner 🏆 Of Smart India Hackathon 2022 (SIH 2022) 🌟</h2>
 <img src="screenshots/winner.JPG"  width="100%"/>
-
 <h2 align="center">COMPLETE DESCRIPTION</h2>
 
 ### PS ID : RK774
