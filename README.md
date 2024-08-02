@@ -90,7 +90,7 @@ We have implemented these features:
 3. [Rajnish Puri](https://github.com/RajnishPuri)
 4. [Prashant Kumar](https://github.com/PkThunderBolt)
 5. [Shubham Kumar](https://github.com/ItsWhiteDevil)
-6. Aradhana Kumari
+6. [Aradhana Kumari](https://github.com/aradhana2618)
 
 ### Hire Us
 <a href="https://www.linkedin.com/in/ujjwal-raj-b2545a213/"> <img src="https://img.shields.io/badge/ujjwal-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn"></a>
